@@ -6,7 +6,15 @@ import AuthModal from './login';
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
   const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
+  const [showTopbar, setShowTopbar] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowTopbar(true);
+    }, 120);
+    return () => clearTimeout(timer);
+  }, []);
 
   const openAuth = (mode: 'login' | 'register') => {
     setAuthMode(mode);
@@ -50,24 +58,26 @@ export default function Home() {
       />
 
       {/* Floating Header Actions Overlay: Log in & Registration */}
-      <div className="win-site-topbar" role="toolbar" aria-label="Account Actions">
-        <button
-          type="button"
-          className="win-topbar-btn win-topbar-btn--login"
-          onClick={() => openAuth('login')}
-          id="win-top-login-btn"
-        >
-          Log in
-        </button>
-        <button
-          type="button"
-          className="win-topbar-btn win-topbar-btn--register"
-          onClick={() => openAuth('register')}
-          id="win-top-register-btn"
-        >
-          Registration
-        </button>
-      </div>
+      {showTopbar && (
+        <div className="win-site-topbar" role="toolbar" aria-label="Account Actions">
+          <button
+            type="button"
+            className="win-topbar-btn win-topbar-btn--login"
+            onClick={() => openAuth('login')}
+            id="win-top-login-btn"
+          >
+            Log in
+          </button>
+          <button
+            type="button"
+            className="win-topbar-btn win-topbar-btn--register"
+            onClick={() => openAuth('register')}
+            id="win-top-register-btn"
+          >
+            Registration
+          </button>
+        </div>
+      )}
 
       {/* Unified Login & Registration Overlay Modal */}
       <AuthModal
