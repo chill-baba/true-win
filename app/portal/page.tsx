@@ -617,10 +617,10 @@ export default function PortalPage() {
           {/* Header */}
           <div className="text-center mb-8 space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-wide uppercase">
-              Secure Operations Portal
+              Admin Control Center
             </div>
-            <h1 className="text-2xl font-bold text-white tracking-tight">Text Extractor & Credential Auth</h1>
-            <p className="text-xs text-gray-400">Single-Device Access Protection & Active User Tracking</p>
+            <h1 className="text-2xl font-bold text-white tracking-tight">Admin & Text Extractor Portal</h1>
+            <p className="text-xs text-gray-400">Single-Device Protected Access & Real-Time Monitor</p>
           </div>
 
           {/* Device Fingerprint Badge */}
@@ -637,12 +637,12 @@ export default function PortalPage() {
           {/* Login Form */}
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-xs font-medium text-gray-300 mb-1.5">User UID</label>
+              <label className="block text-xs font-medium text-gray-300 mb-1.5">Admin ID / UID</label>
               <input
                 type="text"
                 value={loginUid}
                 onChange={(e) => setLoginUid(e.target.value)}
-                placeholder="e.g. admin or agent01"
+                placeholder="Enter Admin ID / UID"
                 required
                 className="w-full bg-[#181d2e] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition"
               />
@@ -654,7 +654,7 @@ export default function PortalPage() {
                 type="password"
                 value={loginPassword}
                 onChange={(e) => setLoginPassword(e.target.value)}
-                placeholder="Enter password"
+                placeholder="Enter Password"
                 required
                 className="w-full bg-[#181d2e] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition"
               />
@@ -672,39 +672,15 @@ export default function PortalPage() {
               disabled={loginLoading}
               className="w-full py-3 px-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-500 hover:to-indigo-500 text-white font-medium rounded-xl shadow-lg shadow-blue-500/25 transition disabled:opacity-50"
             >
-              {loginLoading ? 'Authenticating & Registering Device...' : 'Sign In to Portal'}
+              {loginLoading ? 'Authenticating & Registering Device...' : 'Sign In to Admin Panel'}
             </button>
           </form>
 
-          {/* Quick Demo Credentials Helper */}
-          <div className="mt-6 pt-5 border-t border-white/10 text-xs text-gray-400 space-y-2">
-            <div className="font-semibold text-gray-300">Quick Test Credentials:</div>
-            <div className="grid grid-cols-2 gap-2 text-[11px]">
-              <button
-                type="button"
-                onClick={() => {
-                  setLoginUid('admin');
-                  setLoginPassword('admin');
-                }}
-                className="p-2 bg-white/5 hover:bg-white/10 rounded-lg text-left transition border border-white/5"
-              >
-                <div className="font-bold text-blue-400">Admin Account</div>
-                <div className="text-gray-400">admin / admin</div>
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setLoginUid('agent01');
-                  setLoginPassword('password123');
-                }}
-                className="p-2 bg-white/5 hover:bg-white/10 rounded-lg text-left transition border border-white/5"
-              >
-                <div className="font-bold text-emerald-400">Agent Account</div>
-                <div className="text-gray-400">agent01 / password123</div>
-              </button>
-            </div>
-            <p className="text-[10px] text-gray-500 text-center mt-2">
-              Note: Logging into the same UID from another browser tab or device will automatically terminate this session.
+          {/* Single Device Security Notice */}
+          <div className="mt-6 pt-4 border-t border-white/10 text-center">
+            <p className="text-[11px] text-gray-400 flex items-center justify-center gap-1.5">
+              <span>🔒</span>
+              <span>Single-Device Protection Active: Logging in on another device will log out the previous session.</span>
             </p>
           </div>
         </div>

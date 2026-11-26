@@ -36,6 +36,18 @@ export interface ActivityLog {
 const STORAGE_DIR = process.env.VERCEL ? '/tmp/storage' : path.join(process.cwd(), 'storage');
 const STORAGE_FILE = path.join(STORAGE_DIR, 'portal_state.json');
 
+// Dynamically resolve Admin ID and Password from environment variables
+export function getAdminCredentials() {
+  const uid = (
+    process.env.ADMIN_ID ||
+    process.env.ADMIN_UID ||
+    process.env.ADMIN_USERNAME ||
+    'admin'
+  ).trim();
+  const password = (process.env.ADMIN_PASSWORD || 'admin').trim();
+  return { uid, password };
+}
+
 // Ensure local storage directory exists
 function ensureStorageDir() {
   const dir = path.dirname(STORAGE_FILE);
@@ -46,35 +58,17 @@ function ensureStorageDir() {
 
 // Initial default state
 function getDefaultState(): { users: PortalUser[]; logs: ActivityLog[] } {
+  const { uid: adminUid, password: adminPassword } = getAdminCredentials();
   return {
     users: [
       {
         id: 'admin-001',
-        uid: 'admin',
+        uid: adminUid,
         name: 'System Administrator',
-        password: process.env.ADMIN_PASSWORD || 'admin',
+        password: adminPassword,
         role: 'admin',
         status: 'active',
         can_access_marketing: true,
-        device_lock_enabled: false,
-        active_session_token: null,
-        active_device_id: null,
-        active_device_name: null,
-        bound_device_id: null,
-        is_online: false,
-        last_heartbeat: null,
-        last_login_at: null,
-        last_ip: null,
-        created_at: new Date().toISOString(),
-      },
-      {
-        id: 'agent-001',
-        uid: 'agent01',
-        name: 'Marketing Agent 1',
-        password: 'password123',
-        role: 'user',
-        status: 'active',
-        can_access_marketing: false, // Admin must approve to view marketing credentials!
         device_lock_enabled: false,
         active_session_token: null,
         active_device_id: null,
@@ -95,30 +89,60 @@ function getDefaultState(): { users: PortalUser[]; logs: ActivityLog[] } {
         device_id: null,
         device_name: null,
         ip_address: '127.0.0.1',
-        details: 'Portal auth system initialized with single-device enforcement',
+        details: 'Admin panel initialized with environment variable credentials',
         created_at: new Date().toISOString(),
       },
     ],
   };
 }
 
-// Read local JSON state
+// Read local JSON state and always ensure Admin credentials match latest environment variables
 function readLocalState(): { users: PortalUser[]; logs: ActivityLog[] } {
   ensureStorageDir();
+  const { uid: envAdminUid, password: envAdminPassword } = getAdminCredentials();
+
   try {
+    let data: { users: PortalUser[]; logs: ActivityLog[] };
     if (!fs.existsSync(STORAGE_FILE)) {
-      const initial = getDefaultState();
-      fs.writeFileSync(STORAGE_FILE, JSON.stringify(initial, null, 2), 'utf-8');
-      return initial;
+      data = getDefaultState();
+      fs.writeFileSync(STORAGE_FILE, JSON.stringify(data, null, 2), 'utf-8');
+      return data;
     }
     const raw = fs.readFileSync(STORAGE_FILE, 'utf-8');
-    const parsed = JSON.parse(raw);
-    if (!parsed.users || !Array.isArray(parsed.users)) {
-      const initial = getDefaultState();
-      fs.writeFileSync(STORAGE_FILE, JSON.stringify(initial, null, 2), 'utf-8');
-      return initial;
+    data = JSON.parse(raw);
+    if (!data.users || !Array.isArray(data.users)) {
+      data = getDefaultState();
     }
-    return parsed;
+
+    // ALWAYS keep admin credentials in sync with latest environment variables
+    let adminUser = data.users.find((u) => u.role === 'admin');
+    if (!adminUser) {
+      adminUser = {
+        id: 'admin-001',
+        uid: envAdminUid,
+        name: 'System Administrator',
+        password: envAdminPassword,
+        role: 'admin',
+        status: 'active',
+        can_access_marketing: true,
+        device_lock_enabled: false,
+        active_session_token: null,
+        active_device_id: null,
+        active_device_name: null,
+        bound_device_id: null,
+        is_online: false,
+        last_heartbeat: null,
+        last_login_at: null,
+        last_ip: null,
+        created_at: new Date().toISOString(),
+      };
+      data.users.unshift(adminUser);
+    } else {
+      adminUser.uid = envAdminUid;
+      adminUser.password = envAdminPassword;
+    }
+
+    return data;
   } catch (err) {
     console.error('[PORTAL_STORAGE_READ_ERROR]', err);
     return getDefaultState();
@@ -165,7 +189,14 @@ export async function loginUser(params: {
 }) {
   const { uid, password, deviceId, deviceName, ip } = params;
   const state = readLocalState();
-  const user = state.users.find((u) => u.uid.toLowerCase() === uid.trim().toLowerCase());
+  const cleanUid = uid.trim().toLowerCase();
+  const { uid: envAdminUid, password: envAdminPassword } = getAdminCredentials();
+
+  // Find user by UID or match admin role
+  let user = state.users.find((u) => u.uid.toLowerCase() === cleanUid);
+  if (!user && (cleanUid === envAdminUid.toLowerCase() || cleanUid === 'admin')) {
+    user = state.users.find((u) => u.role === 'admin');
+  }
 
   if (!user) {
     return { ok: false, error: 'UID_NOT_FOUND', message: `UID '${uid}' not found.` };
@@ -175,7 +206,12 @@ export async function loginUser(params: {
     return { ok: false, error: 'SUSPENDED', message: 'This account has been suspended by the administrator.' };
   }
 
-  if (password && user.password && user.password !== password) {
+  // Password verification: Admin checks against latest env variable
+  if (user.role === 'admin') {
+    if (password !== envAdminPassword && password !== user.password) {
+      return { ok: false, error: 'INVALID_PASSWORD', message: 'Invalid password.' };
+    }
+  } else if (password && user.password && user.password !== password) {
     return { ok: false, error: 'INVALID_PASSWORD', message: 'Invalid password.' };
   }
 
