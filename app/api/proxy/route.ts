@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+export const maxDuration = 60;
+
 const BASE = 'https://1win.in';
 
 const CSP_HEADER = [

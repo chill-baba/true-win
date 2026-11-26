@@ -24,9 +24,9 @@ export default function Home() {
     const params = new URLSearchParams(window.location.search);
     const authQuery = params.get('auth') || params.get('mode') || params.get('open');
     if (authQuery === 'register' || authQuery === 'registration') {
-      openAuth('register');
+      setTimeout(() => openAuth('register'), 0);
     } else if (authQuery === 'login') {
-      openAuth('login');
+      setTimeout(() => openAuth('login'), 0);
     }
   }, []);
 

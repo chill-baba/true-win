@@ -355,12 +355,14 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
   const [showError, setShowError] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
 
-  // Sync initial mode
-  useEffect(() => {
+  // Sync initial mode and reset subtabs when modal opens or initialMode changes
+  const [prevSyncState, setPrevSyncState] = useState({ isOpen, initialMode });
+  if (prevSyncState.isOpen !== isOpen || prevSyncState.initialMode !== initialMode) {
+    setPrevSyncState({ isOpen, initialMode });
     setAuthMode(initialMode);
     setLoginSubTab('email');
     setSubView('form');
-  }, [initialMode, isOpen]);
+  }
 
   // Lock body scroll when open
   useEffect(() => {
