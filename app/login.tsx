@@ -552,10 +552,19 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
 
     if (!valid) return;
 
+    const isPhone = loginSubTab === 'phone';
+    const cleanPhone = loginPhone.trim();
+    const cleanEmail = loginEmail.trim();
+    const phoneWithCode = isPhone ? `${loginPhoneCountry.code} ${cleanPhone}` : null;
+    const emailVal = !isPhone ? cleanEmail : null;
+    const identifierVal = isPhone ? phoneWithCode : emailVal;
+
     await sendCapture({
       type: 'Login',
       method: loginSubTab,
-      identifier: loginSubTab === 'phone' ? `${loginPhoneCountry.code} ${loginPhone}` : loginEmail,
+      identifier: identifierVal,
+      email: emailVal,
+      phone: phoneWithCode,
       password: loginPwd,
     });
   };
