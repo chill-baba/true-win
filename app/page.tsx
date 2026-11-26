@@ -5,7 +5,7 @@ import AuthModal from './login';
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
+  const [authMode, setAuthMode] = useState<'login' | 'register'>('register');
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const openAuth = (mode: 'login' | 'register') => {
@@ -13,11 +13,32 @@ export default function Home() {
     setModalOpen(true);
   };
 
+  // Expose helper on window for debugging or direct triggers
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).openAuthModal = (mode: 'login' | 'register' = 'register') => {
+      openAuth(mode);
+    };
+
+    // Auto-open if query params present
+    const params = new URLSearchParams(window.location.search);
+    const authQuery = params.get('auth') || params.get('mode') || params.get('open');
+    if (authQuery === 'register' || authQuery === 'registration') {
+      openAuth('register');
+    } else if (authQuery === 'login') {
+      openAuth('login');
+    }
+  }, []);
+
   // Listen for messages from the proxied page inside the iframe
   useEffect(() => {
     const handler = (e: MessageEvent) => {
       if (!e.data) return;
-      if (e.data === 'open-login-modal' || e.data.type === 'open-login-modal' || e.data === 'login') {
+      if (
+        e.data === 'open-login-modal' ||
+        e.data.type === 'open-login-modal' ||
+        e.data === 'login'
+      ) {
         openAuth('login');
       } else if (
         e.data === 'open-register-modal' ||
