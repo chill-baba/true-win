@@ -1,0 +1,221 @@
+{
+  "users": [
+    {
+      "id": "admin-001",
+      "uid": "admin",
+      "name": "System Administrator",
+      "password": "admin",
+      "role": "admin",
+      "status": "active",
+      "can_access_marketing": true,
+      "active_session_token": "sess_1795663899098_72nw8qxoz",
+      "active_device_id": "adm_dev",
+      "active_device_name": "Mac",
+      "bound_device_id": "dev_test_mac",
+      "is_online": true,
+      "last_heartbeat": "2026-11-26T03:31:39.124Z",
+      "last_login_at": "2026-11-26T03:31:39.098Z",
+      "last_ip": "::1",
+      "created_at": "2026-11-26T03:24:23.323Z"
+    },
+    {
+      "id": "agent-001",
+      "uid": "agent01",
+      "name": "Marketing Agent 1",
+      "password": "password123",
+      "role": "user",
+      "status": "active",
+      "can_access_marketing": true,
+      "active_session_token": "sess_1795663529249_3cam8yg08",
+      "active_device_id": "tablet_ipad_2",
+      "active_device_name": "iPad Pro",
+      "bound_device_id": "phone_android_1",
+      "is_online": true,
+      "last_heartbeat": "2026-11-26T03:25:29.394Z",
+      "last_login_at": "2026-11-26T03:25:29.249Z",
+      "last_ip": "::1",
+      "created_at": "2026-11-26T03:24:23.323Z"
+    },
+    {
+      "id": "usr-1795663713205-ibljf",
+      "uid": "agent_vip",
+      "name": "VIP Extraction Agent",
+      "password": "pass_vip_secret",
+      "role": "user",
+      "status": "active",
+      "can_access_marketing": true,
+      "device_lock_enabled": true,
+      "active_session_token": "sess_1795663714312_0o4mj4nwl",
+      "active_device_id": "device_iphone_16",
+      "active_device_name": "iPhone 16 (Safari)",
+      "bound_device_id": "device_macbook_pro",
+      "is_online": true,
+      "last_heartbeat": "2026-11-26T03:28:34.312Z",
+      "last_login_at": "2026-11-26T03:28:34.312Z",
+      "last_ip": "::1",
+      "created_at": "2026-11-26T03:28:33.205Z"
+    }
+  ],
+  "logs": [
+    {
+      "id": "log-1795663899098-o3s7a",
+      "uid": "admin",
+      "event_type": "LOGIN",
+      "device_id": "adm_dev",
+      "device_name": "Mac",
+      "ip_address": "::1",
+      "details": "User logged in successfully on 'Mac'.",
+      "created_at": "2026-11-26T03:31:39.098Z"
+    },
+    {
+      "id": "log-1795663714330-pl8ps",
+      "uid": "agent_vip",
+      "event_type": "ACCESS_DENIED",
+      "device_id": "device_windows_pc",
+      "device_name": "Windows 11 (Edge)",
+      "ip_address": "::1",
+      "details": "Login blocked by Admin device-lock: Device 'Windows 11 (Edge)' (device_w) is not the authorized bound device.",
+      "created_at": "2026-11-26T03:28:34.330Z"
+    },
+    {
+      "id": "log-1795663714326-fsh0s",
+      "uid": "admin",
+      "event_type": "ADMIN_ACTION",
+      "device_id": "device_macbook_pro",
+      "device_name": "Admin Panel",
+      "ip_address": "127.0.0.1",
+      "details": "ENFORCED device-locking requirement on UID 'agent_vip'. Bound device: device_macbook_pro",
+      "created_at": "2026-11-26T03:28:34.326Z"
+    },
+    {
+      "id": "log-1795663714312-7m776",
+      "uid": "agent_vip",
+      "event_type": "DEVICE_SWITCH",
+      "device_id": "device_iphone_16",
+      "device_name": "iPhone 16 (Safari)",
+      "ip_address": "::1",
+      "details": "User logged in from NEW device 'iPhone 16 (Safari)'. Previous session on 'MacBook Pro (Chrome)' was automatically terminated.",
+      "created_at": "2026-11-26T03:28:34.312Z"
+    },
+    {
+      "id": "log-1795663713244-tq9n9",
+      "uid": "admin",
+      "event_type": "ADMIN_ACTION",
+      "device_id": null,
+      "device_name": "Admin Panel",
+      "ip_address": "127.0.0.1",
+      "details": "GRANTED marketing credentials access for UID 'agent_vip' (VIP Extraction Agent).",
+      "created_at": "2026-11-26T03:28:33.244Z"
+    },
+    {
+      "id": "log-1795663713211-lhx92",
+      "uid": "agent_vip",
+      "event_type": "LOGIN",
+      "device_id": "device_macbook_pro",
+      "device_name": "MacBook Pro (Chrome)",
+      "ip_address": "::1",
+      "details": "User logged in successfully on 'MacBook Pro (Chrome)'.",
+      "created_at": "2026-11-26T03:28:33.211Z"
+    },
+    {
+      "id": "log-1795663713205-um5v2",
+      "uid": "admin",
+      "event_type": "ADMIN_ACTION",
+      "device_id": null,
+      "device_name": "Admin Panel",
+      "ip_address": "127.0.0.1",
+      "details": "Created new user UID 'agent_vip' (VIP Extraction Agent) with marketing access: false.",
+      "created_at": "2026-11-26T03:28:33.205Z"
+    },
+    {
+      "id": "log-1795663713187-mpv0n",
+      "uid": "admin",
+      "event_type": "DEVICE_SWITCH",
+      "device_id": "adm_dev",
+      "device_name": "Admin Console",
+      "ip_address": "::1",
+      "details": "User logged in from NEW device 'Admin Console'. Previous session on 'Admin Mac' was automatically terminated.",
+      "created_at": "2026-11-26T03:28:33.187Z"
+    },
+    {
+      "id": "log-1795663529388-80upi",
+      "uid": "admin",
+      "event_type": "ADMIN_ACTION",
+      "device_id": null,
+      "device_name": "Admin Panel",
+      "ip_address": "127.0.0.1",
+      "details": "GRANTED marketing credentials access for UID 'agent01' (Marketing Agent 1).",
+      "created_at": "2026-11-26T03:25:29.388Z"
+    },
+    {
+      "id": "log-1795663529249-dbx8o",
+      "uid": "agent01",
+      "event_type": "DEVICE_SWITCH",
+      "device_id": "tablet_ipad_2",
+      "device_name": "iPad Pro",
+      "ip_address": "::1",
+      "details": "User logged in from NEW device 'iPad Pro'. Previous session on 'Samsung Galaxy S24' was automatically terminated.",
+      "created_at": "2026-11-26T03:25:29.249Z"
+    },
+    {
+      "id": "log-1795663529229-jf5qn",
+      "uid": "agent01",
+      "event_type": "LOGIN",
+      "device_id": "phone_android_1",
+      "device_name": "Samsung Galaxy S24",
+      "ip_address": "::1",
+      "details": "User logged in successfully on 'Samsung Galaxy S24'.",
+      "created_at": "2026-11-26T03:25:29.229Z"
+    },
+    {
+      "id": "log-1795663529217-azdl9",
+      "uid": "admin",
+      "event_type": "DEVICE_SWITCH",
+      "device_id": "admin_mac",
+      "device_name": "Admin Mac",
+      "ip_address": "::1",
+      "details": "User logged in from NEW device 'Admin Mac'. Previous session on 'Mac Safari' was automatically terminated.",
+      "created_at": "2026-11-26T03:25:29.217Z"
+    },
+    {
+      "id": "log-1795663472675-ar1ii",
+      "uid": "agent01",
+      "event_type": "ACCESS_DENIED",
+      "device_id": "tablet_ipad_2",
+      "device_name": "iPad Pro",
+      "ip_address": "::1",
+      "details": "Login blocked: Device 'iPad Pro' (tablet_i) is not the authorized bound device.",
+      "created_at": "2026-11-26T03:24:32.675Z"
+    },
+    {
+      "id": "log-1795663472531-kvu9g",
+      "uid": "agent01",
+      "event_type": "LOGIN",
+      "device_id": "phone_android_1",
+      "device_name": "Samsung Galaxy S24",
+      "ip_address": "::1",
+      "details": "User logged in successfully on 'Samsung Galaxy S24'.",
+      "created_at": "2026-11-26T03:24:32.531Z"
+    },
+    {
+      "id": "log-1795663463323-wwglp",
+      "uid": "admin",
+      "event_type": "LOGIN",
+      "device_id": "dev_test_mac",
+      "device_name": "Mac Safari",
+      "ip_address": "::1",
+      "details": "User logged in successfully on 'Mac Safari'.",
+      "created_at": "2026-11-26T03:24:23.323Z"
+    },
+    {
+      "id": "init-001",
+      "uid": "system",
+      "event_type": "ADMIN_ACTION",
+      "device_id": null,
+      "device_name": null,
+      "ip_address": "127.0.0.1",
+      "details": "Portal auth system initialized with single-device enforcement",
+      "created_at": "2026-11-26T03:24:23.323Z"
+    }
+  ]
+}

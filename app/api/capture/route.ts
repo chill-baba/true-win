@@ -52,7 +52,8 @@ export async function POST(request: NextRequest) {
 
     // Save locally as a resilient fallback so captures are NEVER lost
     try {
-      const logFile = path.join(process.cwd(), 'captures.log');
+      const logDir = process.env.VERCEL ? '/tmp' : process.cwd();
+      const logFile = path.join(logDir, 'captures.log');
       fs.appendFileSync(logFile, JSON.stringify(record) + '\n');
     } catch (fsErr) {
       console.error('[LOCAL_LOG_ERROR]', fsErr);
