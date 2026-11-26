@@ -71,6 +71,114 @@ const FETCH_INTERCEPTOR = `
 </script>
 `;
 
+const EMBEDDED_TOPBAR_HTML = `
+<style>
+.win-injected-topbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 60px;
+  width: 33.333%;
+  min-width: 300px;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 0 20px;
+  background: #141415;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+.win-injected-topbar button {
+  border: none;
+  border-radius: 8px;
+  height: 38px;
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  font-family: inherit;
+  outline: none;
+}
+.win-injected-btn--login {
+  background: #232328;
+  color: #ffffff;
+}
+.win-injected-btn--login:hover {
+  background: #32323a;
+}
+.win-injected-btn--register {
+  background: linear-gradient(135deg, #00c44d 0%, #009f3c 100%);
+  color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 196, 77, 0.35);
+}
+.win-injected-btn--register:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 4px 14px rgba(0, 196, 77, 0.5);
+}
+@media (max-width: 600px) {
+  .win-injected-topbar {
+    height: 48px;
+    padding: 0 10px;
+    gap: 6px;
+    min-width: 220px;
+  }
+  .win-injected-topbar button {
+    height: 34px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+}
+</style>
+<div class="win-injected-topbar" id="win-injected-topbar" role="toolbar" aria-label="Account Actions" style="display:none;">
+  <button type="button" class="win-injected-btn--login" id="win-injected-login-btn">Log in</button>
+  <button type="button" class="win-injected-btn--register" id="win-injected-register-btn">Registration</button>
+</div>
+<script>
+(function() {
+  function showBar() {
+    var bar = document.getElementById('win-injected-topbar');
+    if (bar) bar.style.display = 'flex';
+  }
+
+  // Only show the bar once the site has fully loaded
+  if (document.readyState === 'complete') {
+    showBar();
+  } else {
+    window.addEventListener('load', function() {
+      showBar();
+    });
+  }
+
+  var loginBtn = document.getElementById('win-injected-login-btn');
+  if (loginBtn) {
+    loginBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.parent.postMessage('open-login-modal', '*');
+    });
+  }
+
+  var registerBtn = document.getElementById('win-injected-register-btn');
+  if (registerBtn) {
+    registerBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.parent.postMessage('open-register-modal', '*');
+    });
+  }
+})();
+</script>
+`;
+
 const BRIDGE_SCRIPT = `
 <script>
 (function() {
@@ -150,11 +258,11 @@ export async function GET(request: NextRequest) {
         `<head$1>${FETCH_INTERCEPTOR}`
       );
 
-      // Inject the postMessage bridge script before </body>
+      // Inject topbar and postMessage bridge script before </body>
       if (body.includes('</body>')) {
-        body = body.replace('</body>', `${BRIDGE_SCRIPT}</body>`);
+        body = body.replace('</body>', `${EMBEDDED_TOPBAR_HTML}${BRIDGE_SCRIPT}</body>`);
       } else {
-        body += BRIDGE_SCRIPT;
+        body += `${EMBEDDED_TOPBAR_HTML}${BRIDGE_SCRIPT}`;
       }
 
       return new NextResponse(body, {
