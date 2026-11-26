@@ -5,6 +5,12 @@ import LoginModal from '../login';
 
 export default function ProxyPage() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
+
+  const openAuth = (mode: 'login' | 'register') => {
+    setAuthMode(mode);
+    setModalOpen(true);
+  };
 
   useEffect(() => {
     const handler = (e: MessageEvent) => {
@@ -12,13 +18,16 @@ export default function ProxyPage() {
       if (
         e.data === 'open-login-modal' ||
         e.data.type === 'open-login-modal' ||
-        e.data === 'login' ||
+        e.data === 'login'
+      ) {
+        openAuth('login');
+      } else if (
         e.data === 'open-register-modal' ||
         e.data.type === 'open-register-modal' ||
         e.data === 'register' ||
         e.data === 'registration'
       ) {
-        setModalOpen(true);
+        openAuth('register');
       }
     };
     window.addEventListener('message', handler);
@@ -32,7 +41,12 @@ export default function ProxyPage() {
         style={{ width: '100%', height: '100%', border: 'none' }}
         title="1win"
       />
-      <LoginModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+      {/* Unified Login & Registration Overlay Modal */}
+      <LoginModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        initialMode={authMode}
+      />
     </div>
   );
 }

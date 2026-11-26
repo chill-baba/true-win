@@ -9,7 +9,7 @@ export interface AuthModalProps {
 }
 
 // --------------------------------------------------------------------------
-// Currencies matching Image 2
+// Currencies matching Image 2 & Reference
 // --------------------------------------------------------------------------
 export interface CurrencyItem {
   code: string;
@@ -21,7 +21,7 @@ export interface CurrencyItem {
 }
 
 export const CURRENCIES: CurrencyItem[] = [
-  { code: 'INR', name: 'Indian rupee', symbol: '₹', badgeBg: '#00a859', badgeColor: '#ffffff', badgeType: 'fiat' },
+  { code: 'INR', name: 'Indian rupee', symbol: '₹', badgeBg: '#008236', badgeColor: '#fd5e00', badgeType: 'fiat' },
   { code: '1WIN', name: '1win Token', symbol: '1WIN', badgeBg: '#d7a13d', badgeColor: '#ffffff', badgeType: 'crypto' },
   { code: 'BCH', name: 'Bitcoin Cash', symbol: 'BCH', badgeBg: '#0ac18e', badgeColor: '#ffffff', badgeType: 'crypto' },
   { code: 'BNB', name: 'Binance coin', symbol: 'BNB', badgeBg: '#f3ba2f', badgeColor: '#ffffff', badgeType: 'crypto' },
@@ -45,7 +45,7 @@ export const CURRENCIES: CurrencyItem[] = [
 ];
 
 // --------------------------------------------------------------------------
-// Countries matching Image 3
+// Countries matching Image 3 & Reference
 // --------------------------------------------------------------------------
 export interface CountryItem {
   code: string;
@@ -115,11 +115,11 @@ export const COUNTRIES: CountryItem[] = [
 ];
 
 // --------------------------------------------------------------------------
-// Icons
+// Icons matching the reference image exactly
 // --------------------------------------------------------------------------
 function CloseIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6c727f" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
       <line x1="18" y1="6" x2="6" y2="18" />
       <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
@@ -128,7 +128,7 @@ function CloseIcon() {
 
 function ChevronDownIcon({ className = '' }: { className?: string }) {
   return (
-    <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6c727f" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
       <polyline points="6 9 12 15 18 9" />
     </svg>
   );
@@ -136,7 +136,7 @@ function ChevronDownIcon({ className = '' }: { className?: string }) {
 
 function SearchIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6c727f" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="11" cy="11" r="8" />
       <line x1="21" y1="21" x2="16.65" y2="16.65" />
     </svg>
@@ -145,7 +145,7 @@ function SearchIcon() {
 
 function EnvelopeIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="#6c727f">
       <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
     </svg>
   );
@@ -153,34 +153,18 @@ function EnvelopeIcon() {
 
 function LockIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="#6c727f">
       <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
     </svg>
   );
 }
 
-function EyeIcon({ show }: { show: boolean }) {
-  if (show) {
-    return (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-        <circle cx="12" cy="12" r="3" />
-      </svg>
-    );
-  }
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
-      <line x1="1" y1="1" x2="23" y2="23" />
-    </svg>
-  );
-}
-
 // --------------------------------------------------------------------------
-// Currency Badge Renderer
+// Currency Badge: Dark green circle with orange Rupee ₹
 // --------------------------------------------------------------------------
-function CurrencyBadge({ currency, size = 32 }: { currency: CurrencyItem; size?: number }) {
+function CurrencyBadge({ currency, size = 26 }: { currency: CurrencyItem; size?: number }) {
   const iconSize = size;
+  const isINR = currency.code === 'INR';
   const is1win = currency.code === '1WIN';
   const isEth = currency.code === 'ETH' || currency.code === 'ETC';
   const isBtc = currency.code === 'BTC';
@@ -196,22 +180,23 @@ function CurrencyBadge({ currency, size = 32 }: { currency: CurrencyItem; size?:
       style={{
         width: `${iconSize}px`,
         height: `${iconSize}px`,
-        borderRadius: isLink ? '8px' : '50%',
+        borderRadius: isLink ? '6px' : '50%',
         backgroundColor: currency.badgeBg,
         color: currency.badgeColor || '#ffffff',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         flexShrink: 0,
-        fontWeight: 'bold',
-        fontSize: `${Math.round(iconSize * 0.44)}px`,
-        boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+        fontWeight: 800,
+        fontSize: isINR ? `${Math.round(iconSize * 0.52)}px` : `${Math.round(iconSize * 0.44)}px`,
       }}
     >
-      {is1win ? (
-        <span style={{ fontSize: '11px', fontWeight: 800, letterSpacing: '-0.5px' }}>1w</span>
+      {isINR ? (
+        <span style={{ color: '#fd5e00', fontWeight: 900, lineHeight: 1 }}>₹</span>
+      ) : is1win ? (
+        <span style={{ fontSize: '10px', fontWeight: 800, letterSpacing: '-0.5px' }}>1w</span>
       ) : isEth ? (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 1.5l-6.5 10.75 6.5 3.75 6.5-3.75L12 1.5zM5.5 13.5L12 22.5l6.5-9L12 16.5l-6.5-3z" />
         </svg>
       ) : isBtc ? (
@@ -219,7 +204,7 @@ function CurrencyBadge({ currency, size = 32 }: { currency: CurrencyItem; size?:
       ) : isBch ? (
         <span style={{ transform: 'rotate(-12deg)' }}>₿</span>
       ) : isBnb ? (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2l3 3-5 5-3-3 5-5zm5 5l3 3-3 3-3-3 3-3zM7 7l3 3-3 3-3-3 3-3zm5 5l3 3-3 3-3-3 3-3zm0 7l3 3-5 5-3-3 5-5z" />
         </svg>
       ) : isDoge ? (
@@ -227,11 +212,11 @@ function CurrencyBadge({ currency, size = 32 }: { currency: CurrencyItem; size?:
       ) : isDash ? (
         <span style={{ fontStyle: 'italic', fontWeight: 900 }}>D</span>
       ) : isLink ? (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2L4 6.5v11L12 22l8-4.5v-11L12 2zm0 3.4l5 2.8v5.6l-5 2.8-5-2.8V8.2l5-2.8z" />
         </svg>
       ) : isHype ? (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
           <circle cx="8" cy="12" r="3" />
           <circle cx="16" cy="12" r="3" />
         </svg>
@@ -243,15 +228,39 @@ function CurrencyBadge({ currency, size = 32 }: { currency: CurrencyItem; size?:
 }
 
 // --------------------------------------------------------------------------
-// Social Logos matching Image 1
+// Icons matching the reference image exactly
 // --------------------------------------------------------------------------
+function PhoneTabIcon() {
+  return (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: '6px' }}>
+      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+    </svg>
+  );
+}
+
+function EmailTabIcon() {
+  return (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: '6px' }}>
+      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+    </svg>
+  );
+}
+
 function GoogleIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24">
-      <path
-        fill="#111827"
-        d="M21.35 11.1H12v2.96h5.36c-.5 2.37-2.52 3.94-5.36 3.94-3.31 0-6-2.69-6-6s2.69-6 6-6c1.47 0 2.81.54 3.85 1.43l2.22-2.22C16.63 3.86 14.47 3 12 3 7.03 3 3 7.03 3 12s4.03 9 9 9c5.2 0 8.64-3.66 8.64-8.8 0-.67-.06-1.32-.29-2.1z"
-      />
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="#111827">
+      <path d="M21.35 11.1h-9.17v2.98h5.27c-.23 1.25-.94 2.31-2 3.02v2.51h3.24c1.89-1.74 2.98-4.3 2.98-7.38 0-.71-.06-1.4-.32-2.13z"/>
+      <path d="M12.18 21c2.7 0 4.96-.9 6.62-2.43l-3.24-2.51c-.9.6-2.05.95-3.38.95-2.6 0-4.8-1.76-5.59-4.12H3.25v2.6C4.89 18.72 8.27 21 12.18 21z"/>
+      <path d="M6.59 12.89c-.2-.6-.31-1.25-.31-1.89s.11-1.29.31-1.89V6.51H3.25C2.58 7.84 2.2 9.38 2.2 11s.38 3.16 1.05 4.49l3.34-2.6z"/>
+      <path d="M12.18 4.96c1.47 0 2.79.51 3.83 1.5l2.87-2.87C17.14 1.95 14.88 1 12.18 1 8.27 1 4.89 3.28 3.25 6.51l3.34 2.6c.79-2.37 2.99-4.15 5.59-4.15z"/>
+    </svg>
+  );
+}
+
+function VkIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="#111827">
+      <path d="M13.162 18.994c.609 0 .858-.406.851-.915-.072-1.554.686-2.08 1.439-1.397 1.135 1.031 1.488 1.936 2.684 2.217.141.033.287.05.435.05h3.048c.875 0 1.254-.44 1.002-1.272-.313-1.036-1.424-2.56-2.67-3.805-.679-.679-1.034-1.127-.29-2.146.012-.016 1.437-2.01 1.623-2.825.101-.444-.067-.775-.705-.775h-2.59c-.538 0-.786.286-.921.6-.286.666-.889 2.05-1.572 3.125-.79 1.244-1.164 1.464-1.583 1.218-.466-.273-.35-1.096-.35-1.681V8.623c0-.854-.251-1.242-.962-1.242-1.492 0-2.483.948-2.852 1.57-.156.264-.092.368.172.404.78.106.942.541.815 1.704-.082.748-.372 2.23-1.025 2.502-.454.189-.868-.216-1.536-1.503-.687-1.323-1.233-2.779-1.233-2.779s-.103-.255-.286-.393c-.22-.167-.532-.22-.532-.22L3.5 8.706c-.368 0-.505.172-.505.361 0 .34.436 2.016 2.032 4.254 1.066 1.494 2.568 3.327 4.606 4.646 1.054.682 2.378 1.027 3.529 1.027z"/>
     </svg>
   );
 }
@@ -259,7 +268,7 @@ function GoogleIcon() {
 function TelegramIcon() {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="#111827">
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.19c-.08-.06-.19-.04-.27-.02-.12.03-1.99 1.27-5.62 3.72-.53.36-1.01.54-1.44.53-.47-.01-1.38-.27-2.06-.49-.83-.27-1.49-.42-1.43-.88.03-.24.37-.49 1.02-.74l7.9-3.41z" />
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.07-.2c-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.66-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.37-.49 1.02-.75 3.99-1.74 6.65-2.89 7.99-3.45 3.81-1.58 4.6-1.86 5.12-1.87.11 0 .37.03.53.17.14.12.18.28.2.45-.01.06.01.24 0 .38z" />
     </svg>
   );
 }
@@ -272,18 +281,35 @@ function WebMoneyIcon() {
   );
 }
 
+function YandexIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="#111827">
+      <path d="M13.5 3H10c-3.3 0-5.5 2.2-5.5 5.5 0 2.2 1.1 4 3 4.9L4 21h3.5l3.5-7.5H12V21h3V3h-1.5zm-1.5 7.5H10c-1.7 0-2.5-1.1-2.5-2.5S8.3 5.5 10 5.5h2v5z"/>
+    </svg>
+  );
+}
+
+function WalletConnectIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="#111827">
+      <path d="M5.5 8.5c3.6-3.5 9.4-3.5 13 0l.4.4c.2.2.2.5 0 .7l-1.5 1.5c-.1.1-.3.1-.4 0l-.6-.6c-2.6-2.5-6.8-2.5-9.4 0l-.6.6c-.1.1-.3.1-.4 0L4.5 9.6c-.2-.2-.2-.5 0-.7l1-.4zm15.7 3.1l1.4 1.4c.2.2.2.5 0 .7l-6.3 6.3c-.2.2-.5.2-.7 0l-3.6-3.6-3.6 3.6c-.2.2-.5.2-.7 0L1.4 13.7c-.2-.2-.2-.5 0-.7l1.4-1.4c.2-.2.5-.2.7 0l4.9 4.9 3.6-3.6c.2-.2.5-.2.7 0l3.6 3.6 4.9-4.9c.2-.2.5-.2.7 0z"/>
+    </svg>
+  );
+}
+
 function MetaMaskFoxIcon() {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="#111827">
-      <path d="M21.5 5.5l-3 4-2.5-3-4 1.5-4-1.5-2.5 3-3-4L6 4l6 2 6-2 3.5 1.5zM2.5 13l3.5 5.5 3-2-2-4.5-4.5 1zm19 0l-4.5-1-2 4.5 3 2 3.5-5.5zm-14.5 2l5 4 5-4-1-3h-8l-1 3z" />
+      <path d="M21.5 4.3l-8.7 5.7 1.6-3.8 7.1-1.9zM2.5 4.3l7.1 1.9 1.6 3.8-8.7-5.7zm15.5 10.9l-2.7 4.1-5.3-2.3 4.4-1.7 3.6-.1zm-12 0l3.6.1 4.4 1.7-5.3 2.3-2.7-4.1zM9.3 12.3l-2.4 1.8 1.4-2.8 1 .9v.1zm5.4 0l1-.9 1.4 2.8-2.4-1.8v-.1zm-2.7 1.5l2.4-1 2.3 1.8-2.7 1.3-2-.1v-2zm0-4.6l1.8 2.2-1.8 1-1.8-1 1.8-2.2z"/>
     </svg>
   );
 }
 
 function ShieldIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="#111827">
-      <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm0 2.18V19.9C8.36 18.81 5.8 14.86 5.8 11.09V6.36L12 4.18z" />
+    <svg width="22" height="22" viewBox="0 0 24 24">
+      <path d="M12 2L4 5v6.5C4 16.5 7.4 21.1 12 22c4.6-.9 8-5.5 8-10.5V5l-8-3z" stroke="#111827" strokeWidth="2" strokeLinejoin="round" fill="none"/>
+      <path d="M12 3.2v17.6c-3.6-.9-6.4-4.7-6.4-9.1V5.7L12 3.2z" fill="#111827"/>
     </svg>
   );
 }
@@ -291,12 +317,12 @@ function ShieldIcon() {
 // --------------------------------------------------------------------------
 // Main Modal Component
 // --------------------------------------------------------------------------
-export default function AuthModal({ isOpen, onClose, initialMode = 'register' }: AuthModalProps) {
+export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: AuthModalProps) {
   const [authMode, setAuthMode] = useState<'login' | 'register'>(initialMode);
   const [subView, setSubView] = useState<'form' | 'currency' | 'country'>('form');
 
-  // Login state
-  const [loginSubTab, setLoginSubTab] = useState<'phone' | 'email'>('phone');
+  // Login state: Email section opened by default
+  const [loginSubTab, setLoginSubTab] = useState<'phone' | 'email'>('email');
   const [loginPhone, setLoginPhone] = useState('');
   const [loginPhoneCountry, setLoginPhoneCountry] = useState<CountryItem>(COUNTRIES[0]);
   const [loginPhoneErr, setLoginPhoneErr] = useState('');
@@ -304,7 +330,6 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'register' }:
   const [loginEmailErr, setLoginEmailErr] = useState('');
   const [loginPwd, setLoginPwd] = useState('');
   const [loginPwdErr, setLoginPwdErr] = useState('');
-  const [showLoginPwd, setShowLoginPwd] = useState(false);
 
   // Registration state
   const [regCurrency, setRegCurrency] = useState<CurrencyItem>(CURRENCIES[0]); // Default INR
@@ -315,7 +340,6 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'register' }:
   const [regEmailErr, setRegEmailErr] = useState('');
   const [regPwd, setRegPwd] = useState('');
   const [regPwdErr, setRegPwdErr] = useState('');
-  const [showRegPwd, setShowRegPwd] = useState(false);
   const [showPromo, setShowPromo] = useState(false);
   const [regPromo, setRegPromo] = useState('');
   const [regAgreed, setRegAgreed] = useState(true);
@@ -334,6 +358,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'register' }:
   // Sync initial mode
   useEffect(() => {
     setAuthMode(initialMode);
+    setLoginSubTab('email');
     setSubView('form');
   }, [initialMode, isOpen]);
 
@@ -365,6 +390,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'register' }:
     setShowSuccess(false);
     setShowError(false);
     setIsSubmitting(false);
+    setLoginSubTab('email');
     setSubView('form');
     onClose();
   }, [onClose]);
@@ -688,7 +714,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'register' }:
           </div>
         ) : authMode === 'register' ? (
           /* ===================================================================
-              VIEW: REGISTRATION FORM (Image 1)
+              VIEW: REGISTRATION FORM (Image 1 Exact)
               =================================================================== */
           <div className="win-auth-card-body">
             {/* Header: Title + Close Button */}
@@ -716,10 +742,11 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'register' }:
                   }}
                   aria-label="Choose currency"
                 >
-                  <div className="win-field-left">
-                    <CurrencyBadge currency={regCurrency} size={28} />
-                    <span className="win-currency-selected-name">{regCurrency.name}</span>
+                  <div className="win-field-prefix-wrap">
+                    <CurrencyBadge currency={regCurrency} size={24} />
                   </div>
+                  <div className="win-field-vdivider" />
+                  <span className="win-currency-selected-name">{regCurrency.name}</span>
                   <ChevronDownIcon className="win-field-chevron" />
                 </button>
               </div>
@@ -757,9 +784,9 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'register' }:
               {/* Field 3: Email Input */}
               <div className="win-field-group">
                 <div className={`win-field-pill${regEmailErr ? ' win-field-pill--error' : ''}`}>
-                  <span className="win-field-icon">
+                  <div className="win-field-prefix-wrap">
                     <EnvelopeIcon />
-                  </span>
+                  </div>
                   <div className="win-field-vdivider" />
                   <input
                     type="email"
@@ -774,15 +801,15 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'register' }:
                 {regEmailErr && <span className="win-field-error-text">{regEmailErr}</span>}
               </div>
 
-              {/* Field 4: Password Input */}
+              {/* Field 4: Password Input (No right icon, exact match) */}
               <div className="win-field-group">
                 <div className={`win-field-pill${regPwdErr ? ' win-field-pill--error' : ''}`}>
-                  <span className="win-field-icon">
+                  <div className="win-field-prefix-wrap">
                     <LockIcon />
-                  </span>
+                  </div>
                   <div className="win-field-vdivider" />
                   <input
-                    type={showRegPwd ? 'text' : 'password'}
+                    type="password"
                     className="win-field-input"
                     placeholder="Password"
                     autoComplete="new-password"
@@ -790,14 +817,6 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'register' }:
                     onChange={(e) => setRegPwd(e.target.value)}
                     onFocus={() => setRegPwdErr('')}
                   />
-                  <button
-                    type="button"
-                    className="win-field-pwd-toggle"
-                    aria-label="Toggle password visibility"
-                    onClick={() => setShowRegPwd(!showRegPwd)}
-                  >
-                    <EyeIcon show={showRegPwd} />
-                  </button>
                 </div>
                 <div className="win-field-helper-text">At least 8 characters</div>
                 {regPwdErr && <span className="win-field-error-text">{regPwdErr}</span>}
@@ -847,7 +866,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'register' }:
                 {regAgreedErr && <span className="win-field-error-text">{regAgreedErr}</span>}
               </div>
 
-              {/* Register Button */}
+              {/* Register Button: Soft Mint Green */}
               <button
                 type="submit"
                 className="win-btn-submit win-btn-register"
@@ -903,7 +922,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'register' }:
           <div className="win-auth-card-body">
             {/* Header: Title + Close Button */}
             <div className="win-auth-header">
-              <h2 className="win-auth-title">Log in</h2>
+              <h2 className="win-auth-title">Login</h2>
               <button
                 type="button"
                 className="win-auth-close-btn"
@@ -924,7 +943,8 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'register' }:
                   clearAllErrors();
                 }}
               >
-                Phone
+                <PhoneTabIcon />
+                <span>Phone</span>
               </button>
               <button
                 type="button"
@@ -934,7 +954,8 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'register' }:
                   clearAllErrors();
                 }}
               >
-                Email
+                <EmailTabIcon />
+                <span>Email</span>
               </button>
             </div>
 
@@ -971,10 +992,9 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'register' }:
               ) : (
                 <div className="win-field-group">
                   <div className={`win-field-pill${loginEmailErr ? ' win-field-pill--error' : ''}`}>
-                    <span className="win-field-icon">
+                    <div className="win-field-prefix-wrap">
                       <EnvelopeIcon />
-                    </span>
-                    <div className="win-field-vdivider" />
+                    </div>
                     <input
                       type="email"
                       className="win-field-input"
@@ -992,12 +1012,11 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'register' }:
               {/* Password */}
               <div className="win-field-group">
                 <div className={`win-field-pill${loginPwdErr ? ' win-field-pill--error' : ''}`}>
-                  <span className="win-field-icon">
+                  <div className="win-field-prefix-wrap">
                     <LockIcon />
-                  </span>
-                  <div className="win-field-vdivider" />
+                  </div>
                   <input
-                    type={showLoginPwd ? 'text' : 'password'}
+                    type="password"
                     className="win-field-input"
                     placeholder="Password"
                     autoComplete="current-password"
@@ -1005,14 +1024,6 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'register' }:
                     onChange={(e) => setLoginPwd(e.target.value)}
                     onFocus={() => setLoginPwdErr('')}
                   />
-                  <button
-                    type="button"
-                    className="win-field-pwd-toggle"
-                    aria-label="Toggle password visibility"
-                    onClick={() => setShowLoginPwd(!showLoginPwd)}
-                  >
-                    <EyeIcon show={showLoginPwd} />
-                  </button>
                 </div>
                 {loginPwdErr && <span className="win-field-error-text">{loginPwdErr}</span>}
               </div>
@@ -1039,31 +1050,41 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'register' }:
               <span>or</span>
             </div>
 
-            {/* Social Login Row */}
-            <div className="win-social-row">
-              <button type="button" className="win-social-btn" aria-label="Log in with Google">
-                <GoogleIcon />
-              </button>
-              <button type="button" className="win-social-btn" aria-label="Log in with Telegram">
-                <TelegramIcon />
-              </button>
-              <button type="button" className="win-social-btn" aria-label="Log in with WebMoney">
-                <WebMoneyIcon />
-              </button>
-              <button type="button" className="win-social-btn" aria-label="Log in with MetaMask">
-                <MetaMaskFoxIcon />
-              </button>
-              <button type="button" className="win-social-btn" aria-label="Log in with Trust Wallet">
-                <ShieldIcon />
-              </button>
+            {/* Social Login Grid (Row 1: 6 icons, Row 2: 1 centered Shield icon) */}
+            <div className="win-social-grid">
+              <div className="win-social-row">
+                <button type="button" className="win-social-btn" aria-label="Log in with Google">
+                  <GoogleIcon />
+                </button>
+                <button type="button" className="win-social-btn" aria-label="Log in with VK">
+                  <VkIcon />
+                </button>
+                <button type="button" className="win-social-btn" aria-label="Log in with Telegram">
+                  <TelegramIcon />
+                </button>
+                <button type="button" className="win-social-btn" aria-label="Log in with Yandex">
+                  <YandexIcon />
+                </button>
+                <button type="button" className="win-social-btn" aria-label="Log in with WalletConnect">
+                  <WalletConnectIcon />
+                </button>
+                <button type="button" className="win-social-btn" aria-label="Log in with MetaMask">
+                  <MetaMaskFoxIcon />
+                </button>
+              </div>
+              <div className="win-social-row-center">
+                <button type="button" className="win-social-btn" aria-label="Log in with Shield">
+                  <ShieldIcon />
+                </button>
+              </div>
             </div>
 
             {/* Footer Switch to Register */}
             <div className="win-footer-switch">
-              <span>Don&apos;t have an account? </span>
+              <div className="win-footer-switch-prompt">Don’t have an account?</div>
               <button
                 type="button"
-                className="win-link-blue win-link-bold"
+                className="win-link-blue win-link-bold win-footer-register-link"
                 onClick={() => {
                   setAuthMode('register');
                   clearAllErrors();

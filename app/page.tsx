@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import AuthModal from './login';
+import LoginModal from './login';
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [authMode, setAuthMode] = useState<'login' | 'register'>('register');
+  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const openAuth = (mode: 'login' | 'register') => {
@@ -16,7 +16,7 @@ export default function Home() {
   // Expose helper on window for debugging or direct triggers
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (window as any).openAuthModal = (mode: 'login' | 'register' = 'register') => {
+    (window as any).openAuthModal = (mode: 'login' | 'register' = 'login') => {
       openAuth(mode);
     };
 
@@ -70,8 +70,9 @@ export default function Home() {
         title="1win"
       />
 
+      {/* Top Floating Navigation Action Buttons - rendered cleanly if iframe buttons not yet ready, or matching 1win navbar */}
       {/* Unified Login & Registration Overlay Modal */}
-      <AuthModal
+      <LoginModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         initialMode={authMode}

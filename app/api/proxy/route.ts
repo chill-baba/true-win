@@ -77,27 +77,23 @@ const EMBEDDED_TOPBAR_HTML = `
   position: absolute;
   top: 0;
   right: 0;
-  height: 60px;
-  width: 33.333%;
-  min-width: 300px;
+  height: 56px;
   z-index: 99999;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 10px;
-  padding: 0 20px;
-  background: #141415;
-  border-radius: 0;
-  border: none;
-  box-shadow: none;
+  gap: 8px;
+  padding: 0 16px;
+  background: transparent;
   box-sizing: border-box;
+  pointer-events: auto;
 }
 .win-injected-topbar button {
   border: none;
   border-radius: 8px;
-  height: 38px;
-  padding: 0 20px;
-  font-size: 14px;
+  height: 36px;
+  padding: 0 18px;
+  font-size: 13.5px;
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
@@ -116,25 +112,24 @@ const EMBEDDED_TOPBAR_HTML = `
   background: #32323a;
 }
 .win-injected-btn--register {
-  background: linear-gradient(135deg, #00c44d 0%, #009f3c 100%);
+  background: #00b843;
   color: #ffffff;
-  box-shadow: 0 2px 10px rgba(0, 196, 77, 0.35);
+  box-shadow: 0 2px 8px rgba(0, 184, 67, 0.3);
 }
 .win-injected-btn--register:hover {
-  filter: brightness(1.1);
-  box-shadow: 0 4px 14px rgba(0, 196, 77, 0.5);
+  background: #02c74a;
 }
 @media (max-width: 600px) {
   .win-injected-topbar {
-    height: 48px;
-    padding: 0 10px;
+    height: 50px;
+    padding: 0 8px;
     gap: 6px;
-    min-width: 220px;
   }
   .win-injected-topbar button {
-    height: 34px;
+    height: 32px;
     padding: 0 12px;
-    font-size: 13px;
+    font-size: 12.5px;
+    border-radius: 7px;
   }
 }
 </style>
@@ -144,12 +139,14 @@ const EMBEDDED_TOPBAR_HTML = `
 </div>
 <script>
 (function() {
+  // If embedded in parent iframe with its own topbar, don't duplicate
+  if (window.self !== window.top) return;
+
   function showBar() {
     var bar = document.getElementById('win-injected-topbar');
     if (bar) bar.style.display = 'flex';
   }
 
-  // Only show the bar once the site has fully loaded
   if (document.readyState === 'complete') {
     showBar();
   } else {
@@ -180,6 +177,15 @@ const EMBEDDED_TOPBAR_HTML = `
 `;
 
 const BRIDGE_SCRIPT = `
+<style>
+button, a, [role="button"] {
+  -webkit-tap-highlight-color: transparent !important;
+}
+button:active, a:active, [role="button"]:active {
+  transform: scale(0.96) !important;
+  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+</style>
 <script>
 (function() {
   function handleAuthClick(e) {
