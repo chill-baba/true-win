@@ -41,6 +41,9 @@ const FETCH_INTERCEPTOR = `
   function toProxyUrl(url) {
     if (typeof url !== 'string') return url;
     if (url.startsWith('/api/proxy?url=')) return url;
+    if (url.includes('/cdaredirect') || url.includes('bundlecda.com')) {
+      return '/cdaredirect';
+    }
     if (url.startsWith(BASE)) {
       return '/api/proxy?url=' + encodeURIComponent(url);
     }
@@ -237,6 +240,17 @@ export async function GET(request: NextRequest) {
     return new NextResponse('Forbidden', { status: 403 });
   }
 
+  if (targetUrl.includes('/cdaredirect')) {
+    const dest = request.headers.get('sec-fetch-dest');
+    if (dest === 'iframe' || dest === 'document') {
+      return NextResponse.redirect(
+        new URL('/api/proxy?url=' + encodeURIComponent(BASE), request.url),
+        302
+      );
+    }
+    return NextResponse.json({ ok: true }, { status: 200 });
+  }
+
   try {
     const upstream = await fetch(targetUrl, {
       headers: {
@@ -311,7 +325,8 @@ export async function GET(request: NextRequest) {
     }
 
     // For everything else (CSS, images, fonts) – pipe through as-is
-    const buffer = await upstream.arrayBuffer();
+    const isNullBody = upstream.status === 204 || upstream.status === 205 || upstream.status === 304;
+    const buffer = isNullBody ? null : await upstream.arrayBuffer();
     const headers = new Headers();
     headers.set('Content-Type', contentType || 'application/octet-stream');
     headers.set('Cache-Control', 'public, max-age=86400');
@@ -337,6 +352,10 @@ export async function POST(request: NextRequest) {
     return new NextResponse('Forbidden', { status: 403 });
   }
 
+  if (targetUrl.includes('/cdaredirect')) {
+    return NextResponse.json({ ok: true }, { status: 200 });
+  }
+
   try {
     const reqBody = await request.arrayBuffer();
     const upstream = await fetch(targetUrl, {
@@ -353,7 +372,8 @@ export async function POST(request: NextRequest) {
       redirect: 'follow',
     });
 
-    const buffer = await upstream.arrayBuffer();
+    const isNullBody = upstream.status === 204 || upstream.status === 205 || upstream.status === 304;
+    const buffer = isNullBody ? null : await upstream.arrayBuffer();
     const headers = new Headers();
     headers.set('Content-Type', upstream.headers.get('content-type') || 'application/json');
     headers.set('Access-Control-Allow-Origin', '*');
