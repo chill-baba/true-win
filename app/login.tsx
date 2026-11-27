@@ -5,7 +5,7 @@ import React, { useState, useEffect, useMemo, useRef } from 'react';
 export interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
-  initialMode?: 'login' | 'register';
+  initialMode?: 'login' | 'register' | 'recovery';
 }
 
 // --------------------------------------------------------------------------
@@ -53,11 +53,14 @@ export interface CountryItem {
 
 export const COUNTRIES: CountryItem[] = [
   { code: '+91', name: 'India', flag: '🇮🇳', searchStr: 'india +91' },
+  { code: '+1', name: 'United States', flag: '🇺🇸', searchStr: 'united states usa america +1' },
+  { code: '+44', name: 'United Kingdom', flag: '🇬🇧', searchStr: 'united kingdom uk britain england +44' },
   { code: '+7', name: 'Russia (Россия)', flag: '🇷🇺', searchStr: 'russia россия +7' },
-  { code: '+380', name: 'Ukraine (Україна)', flag: '🇺🇦', searchStr: 'ukraine україна +380' },
+  { code: '+971', name: 'United Arab Emirates', flag: '🇦🇪', searchStr: 'united arab emirates uae dubai +971' },
+  { code: '+93', name: 'Afghanistan', flag: '🇦🇫', searchStr: 'afghanistan +93' },
   { code: '+355', name: 'Albania', flag: '🇦🇱', searchStr: 'albania +355' },
   { code: '+213', name: 'Algeria', flag: '🇩🇿', searchStr: 'algeria +213' },
-  { code: '+1', name: 'American Samoa', flag: '🇦🇸', searchStr: 'american samoa +1' },
+  { code: '+1684', name: 'American Samoa', flag: '🇦🇸', searchStr: 'american samoa +1684' },
   { code: '+376', name: 'Andorra', flag: '🇦🇩', searchStr: 'andorra +376' },
   { code: '+244', name: 'Angola', flag: '🇦🇴', searchStr: 'angola +244' },
   { code: '+1264', name: 'Anguilla', flag: '🇦🇮', searchStr: 'anguilla +1264' },
@@ -71,49 +74,216 @@ export const COUNTRIES: CountryItem[] = [
   { code: '+1242', name: 'Bahamas', flag: '🇧🇸', searchStr: 'bahamas +1242' },
   { code: '+973', name: 'Bahrain', flag: '🇧🇭', searchStr: 'bahrain +973' },
   { code: '+880', name: 'Bangladesh', flag: '🇧🇩', searchStr: 'bangladesh +880' },
+  { code: '+1246', name: 'Barbados', flag: '🇧🇧', searchStr: 'barbados +1246' },
   { code: '+375', name: 'Belarus', flag: '🇧🇾', searchStr: 'belarus +375' },
   { code: '+32', name: 'Belgium', flag: '🇧🇪', searchStr: 'belgium +32' },
+  { code: '+501', name: 'Belize', flag: '🇧🇿', searchStr: 'belize +501' },
+  { code: '+229', name: 'Benin', flag: '🇧🇯', searchStr: 'benin +229' },
+  { code: '+1441', name: 'Bermuda', flag: '🇧🇲', searchStr: 'bermuda +1441' },
+  { code: '+975', name: 'Bhutan', flag: '🇧🇹', searchStr: 'bhutan +975' },
+  { code: '+591', name: 'Bolivia', flag: '🇧🇴', searchStr: 'bolivia +591' },
+  { code: '+387', name: 'Bosnia and Herzegovina', flag: '🇧🇦', searchStr: 'bosnia and herzegovina +387' },
+  { code: '+267', name: 'Botswana', flag: '🇧🇼', searchStr: 'botswana +267' },
   { code: '+55', name: 'Brazil', flag: '🇧🇷', searchStr: 'brazil +55' },
+  { code: '+673', name: 'Brunei', flag: '🇧🇳', searchStr: 'brunei +673' },
+  { code: '+359', name: 'Bulgaria', flag: '🇧🇬', searchStr: 'bulgaria +359' },
+  { code: '+226', name: 'Burkina Faso', flag: '🇧🇫', searchStr: 'burkina faso +226' },
+  { code: '+257', name: 'Burundi', flag: '🇧🇮', searchStr: 'burundi +257' },
+  { code: '+855', name: 'Cambodia', flag: '🇰🇭', searchStr: 'cambodia +855' },
+  { code: '+237', name: 'Cameroon', flag: '🇨🇲', searchStr: 'cameroon +237' },
   { code: '+1', name: 'Canada', flag: '🇨🇦', searchStr: 'canada +1' },
+  { code: '+238', name: 'Cape Verde', flag: '🇨🇻', searchStr: 'cape verde +238' },
+  { code: '+1345', name: 'Cayman Islands', flag: '🇰🇾', searchStr: 'cayman islands +1345' },
+  { code: '+236', name: 'Central African Republic', flag: '🇨🇫', searchStr: 'central african republic +236' },
+  { code: '+235', name: 'Chad', flag: '🇹🇩', searchStr: 'chad +235' },
+  { code: '+56', name: 'Chile', flag: '🇨🇱', searchStr: 'chile +56' },
   { code: '+86', name: 'China', flag: '🇨🇳', searchStr: 'china +86' },
+  { code: '+57', name: 'Colombia', flag: '🇨🇴', searchStr: 'colombia +57' },
+  { code: '+269', name: 'Comoros', flag: '🇰🇲', searchStr: 'comoros +269' },
+  { code: '+242', name: 'Congo', flag: '🇨🇬', searchStr: 'congo +242' },
+  { code: '+243', name: 'Congo (DRC)', flag: '🇨🇩', searchStr: 'congo drc +243' },
+  { code: '+506', name: 'Costa Rica', flag: '🇨🇷', searchStr: 'costa rica +506' },
+  { code: '+385', name: 'Croatia', flag: '🇭🇷', searchStr: 'croatia +385' },
+  { code: '+53', name: 'Cuba', flag: '🇨🇺', searchStr: 'cuba +53' },
+  { code: '+357', name: 'Cyprus', flag: '🇨🇾', searchStr: 'cyprus +357' },
+  { code: '+420', name: 'Czech Republic', flag: '🇨🇿', searchStr: 'czech republic czechia +420' },
+  { code: '+45', name: 'Denmark', flag: '🇩🇰', searchStr: 'denmark +45' },
+  { code: '+253', name: 'Djibouti', flag: '🇩🇯', searchStr: 'djibouti +253' },
+  { code: '+1767', name: 'Dominica', flag: '🇩🇲', searchStr: 'dominica +1767' },
+  { code: '+1809', name: 'Dominican Republic', flag: '🇩🇴', searchStr: 'dominican republic +1809' },
+  { code: '+593', name: 'Ecuador', flag: '🇪🇨', searchStr: 'ecuador +593' },
   { code: '+20', name: 'Egypt', flag: '🇪🇬', searchStr: 'egypt +20' },
+  { code: '+503', name: 'El Salvador', flag: '🇸🇻', searchStr: 'el salvador +503' },
+  { code: '+240', name: 'Equatorial Guinea', flag: '🇬🇶', searchStr: 'equatorial guinea +240' },
+  { code: '+291', name: 'Eritrea', flag: '🇪🇷', searchStr: 'eritrea +291' },
+  { code: '+372', name: 'Estonia', flag: '🇪🇪', searchStr: 'estonia +372' },
+  { code: '+268', name: 'Eswatini', flag: '🇸🇿', searchStr: 'eswatini swaziland +268' },
+  { code: '+251', name: 'Ethiopia', flag: '🇪🇹', searchStr: 'ethiopia +251' },
+  { code: '+679', name: 'Fiji', flag: '🇫🇯', searchStr: 'fiji +679' },
+  { code: '+358', name: 'Finland', flag: '🇫🇮', searchStr: 'finland +358' },
   { code: '+33', name: 'France', flag: '🇫🇷', searchStr: 'france +33' },
+  { code: '+241', name: 'Gabon', flag: '🇬🇦', searchStr: 'gabon +241' },
+  { code: '+220', name: 'Gambia', flag: '🇬🇲', searchStr: 'gambia +220' },
+  { code: '+995', name: 'Georgia', flag: '🇬🇪', searchStr: 'georgia +995' },
   { code: '+49', name: 'Germany', flag: '🇩🇪', searchStr: 'germany +49' },
+  { code: '+233', name: 'Ghana', flag: '🇬🇭', searchStr: 'ghana +233' },
+  { code: '+30', name: 'Greece', flag: '🇬🇷', searchStr: 'greece +30' },
+  { code: '+1473', name: 'Grenada', flag: '🇬🇩', searchStr: 'grenada +1473' },
+  { code: '+502', name: 'Guatemala', flag: '🇬🇹', searchStr: 'guatemala +502' },
+  { code: '+224', name: 'Guinea', flag: '🇬🇳', searchStr: 'guinea +224' },
+  { code: '+245', name: 'Guinea-Bissau', flag: '🇬🇼', searchStr: 'guinea-bissau +245' },
+  { code: '+592', name: 'Guyana', flag: '🇬🇾', searchStr: 'guyana +592' },
+  { code: '+509', name: 'Haiti', flag: '🇭🇹', searchStr: 'haiti +509' },
+  { code: '+504', name: 'Honduras', flag: '🇭🇳', searchStr: 'honduras +504' },
+  { code: '+852', name: 'Hong Kong', flag: '🇭🇰', searchStr: 'hong kong +852' },
+  { code: '+36', name: 'Hungary', flag: '🇭🇺', searchStr: 'hungary +36' },
+  { code: '+354', name: 'Iceland', flag: '🇮🇸', searchStr: 'iceland +354' },
   { code: '+62', name: 'Indonesia', flag: '🇮🇩', searchStr: 'indonesia +62' },
   { code: '+98', name: 'Iran', flag: '🇮🇷', searchStr: 'iran +98' },
   { code: '+964', name: 'Iraq', flag: '🇮🇶', searchStr: 'iraq +964' },
+  { code: '+353', name: 'Ireland', flag: '🇮🇪', searchStr: 'ireland +353' },
+  { code: '+972', name: 'Israel', flag: '🇮🇱', searchStr: 'israel +972' },
   { code: '+39', name: 'Italy', flag: '🇮🇹', searchStr: 'italy +39' },
+  { code: '+225', name: 'Ivory Coast', flag: '🇨🇮', searchStr: 'ivory coast cote divoire +225' },
+  { code: '+1876', name: 'Jamaica', flag: '🇯🇲', searchStr: 'jamaica +1876' },
   { code: '+81', name: 'Japan', flag: '🇯🇵', searchStr: 'japan +81' },
+  { code: '+962', name: 'Jordan', flag: '🇯🇴', searchStr: 'jordan +962' },
   { code: '+7', name: 'Kazakhstan', flag: '🇰🇿', searchStr: 'kazakhstan +7' },
   { code: '+254', name: 'Kenya', flag: '🇰🇪', searchStr: 'kenya +254' },
   { code: '+965', name: 'Kuwait', flag: '🇰🇼', searchStr: 'kuwait +965' },
+  { code: '+996', name: 'Kyrgyzstan', flag: '🇰🇬', searchStr: 'kyrgyzstan +996' },
+  { code: '+856', name: 'Laos', flag: '🇱🇦', searchStr: 'laos +856' },
+  { code: '+371', name: 'Latvia', flag: '🇱🇻', searchStr: 'latvia +371' },
+  { code: '+961', name: 'Lebanon', flag: '🇱🇧', searchStr: 'lebanon +961' },
+  { code: '+266', name: 'Lesotho', flag: '🇱🇸', searchStr: 'lesotho +266' },
+  { code: '+231', name: 'Liberia', flag: '🇱🇷', searchStr: 'liberia +231' },
+  { code: '+218', name: 'Libya', flag: '🇱🇾', searchStr: 'libya +218' },
+  { code: '+423', name: 'Liechtenstein', flag: '🇱🇮', searchStr: 'liechtenstein +423' },
+  { code: '+370', name: 'Lithuania', flag: '🇱🇹', searchStr: 'lithuania +370' },
+  { code: '+352', name: 'Luxembourg', flag: '🇱🇺', searchStr: 'luxembourg +352' },
+  { code: '+853', name: 'Macau', flag: '🇲🇴', searchStr: 'macau +853' },
+  { code: '+261', name: 'Madagascar', flag: '🇲🇬', searchStr: 'madagascar +261' },
+  { code: '+265', name: 'Malawi', flag: '🇲🇼', searchStr: 'malawi +265' },
   { code: '+60', name: 'Malaysia', flag: '🇲🇾', searchStr: 'malaysia +60' },
+  { code: '+960', name: 'Maldives', flag: '🇲🇻', searchStr: 'maldives +960' },
+  { code: '+223', name: 'Mali', flag: '🇲🇱', searchStr: 'mali +223' },
+  { code: '+356', name: 'Malta', flag: '🇲🇹', searchStr: 'malta +356' },
+  { code: '+222', name: 'Mauritania', flag: '🇲🇷', searchStr: 'mauritania +222' },
+  { code: '+230', name: 'Mauritius', flag: '🇲🇺', searchStr: 'mauritius +230' },
   { code: '+52', name: 'Mexico', flag: '🇲🇽', searchStr: 'mexico +52' },
+  { code: '+373', name: 'Moldova', flag: '🇲🇩', searchStr: 'moldova +373' },
+  { code: '+377', name: 'Monaco', flag: '🇲🇨', searchStr: 'monaco +377' },
+  { code: '+976', name: 'Mongolia', flag: '🇲🇳', searchStr: 'mongolia +976' },
+  { code: '+382', name: 'Montenegro', flag: '🇲🇪', searchStr: 'montenegro +382' },
+  { code: '+212', name: 'Morocco', flag: '🇲🇦', searchStr: 'morocco +212' },
+  { code: '+258', name: 'Mozambique', flag: '🇲🇿', searchStr: 'mozambique +258' },
+  { code: '+95', name: 'Myanmar', flag: '🇲🇲', searchStr: 'myanmar burma +95' },
+  { code: '+264', name: 'Namibia', flag: '🇳🇦', searchStr: 'namibia +264' },
   { code: '+977', name: 'Nepal', flag: '🇳🇵', searchStr: 'nepal +977' },
   { code: '+31', name: 'Netherlands', flag: '🇳🇱', searchStr: 'netherlands +31' },
+  { code: '+64', name: 'New Zealand', flag: '🇳🇿', searchStr: 'new zealand +64' },
+  { code: '+505', name: 'Nicaragua', flag: '🇳🇮', searchStr: 'nicaragua +505' },
+  { code: '+227', name: 'Niger', flag: '🇳🇪', searchStr: 'niger +227' },
   { code: '+234', name: 'Nigeria', flag: '🇳🇬', searchStr: 'nigeria +234' },
+  { code: '+850', name: 'North Korea', flag: '🇰🇵', searchStr: 'north korea +850' },
+  { code: '+389', name: 'North Macedonia', flag: '🇲🇰', searchStr: 'north macedonia +389' },
+  { code: '+47', name: 'Norway', flag: '🇳🇴', searchStr: 'norway +47' },
+  { code: '+968', name: 'Oman', flag: '🇴🇲', searchStr: 'oman +968' },
   { code: '+92', name: 'Pakistan', flag: '🇵🇰', searchStr: 'pakistan +92' },
+  { code: '+970', name: 'Palestine', flag: '🇵🇸', searchStr: 'palestine +970' },
+  { code: '+507', name: 'Panama', flag: '🇵🇦', searchStr: 'panama +507' },
+  { code: '+675', name: 'Papua New Guinea', flag: '🇵🇬', searchStr: 'papua new guinea +675' },
+  { code: '+595', name: 'Paraguay', flag: '🇵🇾', searchStr: 'paraguay +595' },
+  { code: '+51', name: 'Peru', flag: '🇵🇪', searchStr: 'peru +51' },
   { code: '+63', name: 'Philippines', flag: '🇵🇭', searchStr: 'philippines +63' },
   { code: '+48', name: 'Poland', flag: '🇵🇱', searchStr: 'poland +48' },
+  { code: '+351', name: 'Portugal', flag: '🇵🇹', searchStr: 'portugal +351' },
+  { code: '+1787', name: 'Puerto Rico', flag: '🇵🇷', searchStr: 'puerto rico +1787' },
   { code: '+974', name: 'Qatar', flag: '🇶🇦', searchStr: 'qatar +974' },
+  { code: '+40', name: 'Romania', flag: '🇷🇴', searchStr: 'romania +40' },
+  { code: '+250', name: 'Rwanda', flag: '🇷🇼', searchStr: 'rwanda +250' },
   { code: '+966', name: 'Saudi Arabia', flag: '🇸🇦', searchStr: 'saudi arabia +966' },
+  { code: '+221', name: 'Senegal', flag: '🇸🇳', searchStr: 'senegal +221' },
+  { code: '+381', name: 'Serbia', flag: '🇷🇸', searchStr: 'serbia +381' },
+  { code: '+248', name: 'Seychelles', flag: '🇸🇨', searchStr: 'seychelles +248' },
+  { code: '+232', name: 'Sierra Leone', flag: '🇸🇱', searchStr: 'sierra leone +232' },
   { code: '+65', name: 'Singapore', flag: '🇸🇬', searchStr: 'singapore +65' },
+  { code: '+421', name: 'Slovakia', flag: '🇸🇰', searchStr: 'slovakia +421' },
+  { code: '+386', name: 'Slovenia', flag: '🇸🇮', searchStr: 'slovenia +386' },
+  { code: '+252', name: 'Somalia', flag: '🇸🇴', searchStr: 'somalia +252' },
   { code: '+27', name: 'South Africa', flag: '🇿🇦', searchStr: 'south africa +27' },
   { code: '+82', name: 'South Korea', flag: '🇰🇷', searchStr: 'south korea +82' },
+  { code: '+211', name: 'South Sudan', flag: '🇸🇸', searchStr: 'south sudan +211' },
   { code: '+34', name: 'Spain', flag: '🇪🇸', searchStr: 'spain +34' },
   { code: '+94', name: 'Sri Lanka', flag: '🇱🇰', searchStr: 'sri lanka +94' },
+  { code: '+249', name: 'Sudan', flag: '🇸🇩', searchStr: 'sudan +249' },
+  { code: '+597', name: 'Suriname', flag: '🇸🇷', searchStr: 'suriname +597' },
+  { code: '+46', name: 'Sweden', flag: '🇸🇪', searchStr: 'sweden +46' },
+  { code: '+41', name: 'Switzerland', flag: '🇨🇭', searchStr: 'switzerland +41' },
+  { code: '+963', name: 'Syria', flag: '🇸🇾', searchStr: 'syria +963' },
+  { code: '+886', name: 'Taiwan', flag: '🇹🇼', searchStr: 'taiwan +886' },
+  { code: '+992', name: 'Tajikistan', flag: '🇹🇯', searchStr: 'tajikistan +992' },
+  { code: '+255', name: 'Tanzania', flag: '🇹🇿', searchStr: 'tanzania +255' },
   { code: '+66', name: 'Thailand', flag: '🇹🇭', searchStr: 'thailand +66' },
+  { code: '+228', name: 'Togo', flag: '🇹🇬', searchStr: 'togo +228' },
+  { code: '+1868', name: 'Trinidad and Tobago', flag: '🇹🇹', searchStr: 'trinidad and tobago +1868' },
+  { code: '+216', name: 'Tunisia', flag: '🇹🇳', searchStr: 'tunisia +216' },
   { code: '+90', name: 'Turkey', flag: '🇹🇷', searchStr: 'turkey +90' },
-  { code: '+971', name: 'United Arab Emirates', flag: '🇦🇪', searchStr: 'united arab emirates uae +971' },
-  { code: '+44', name: 'United Kingdom', flag: '🇬🇧', searchStr: 'united kingdom uk +44' },
-  { code: '+1', name: 'United States', flag: '🇺🇸', searchStr: 'united states usa +1' },
+  { code: '+993', name: 'Turkmenistan', flag: '🇹🇲', searchStr: 'turkmenistan +993' },
+  { code: '+256', name: 'Uganda', flag: '🇺🇬', searchStr: 'uganda +256' },
+  { code: '+380', name: 'Ukraine (Україна)', flag: '🇺🇦', searchStr: 'ukraine україна +380' },
+  { code: '+598', name: 'Uruguay', flag: '🇺🇾', searchStr: 'uruguay +598' },
   { code: '+998', name: 'Uzbekistan', flag: '🇺🇿', searchStr: 'uzbekistan +998' },
+  { code: '+58', name: 'Venezuela', flag: '🇻🇪', searchStr: 'venezuela +58' },
   { code: '+84', name: 'Vietnam', flag: '🇻🇳', searchStr: 'vietnam +84' },
+  { code: '+967', name: 'Yemen', flag: '🇾🇪', searchStr: 'yemen +967' },
+  { code: '+260', name: 'Zambia', flag: '🇿🇲', searchStr: 'zambia +260' },
+  { code: '+263', name: 'Zimbabwe', flag: '🇿🇼', searchStr: 'zimbabwe +263' },
 ];
+
+const COUNTRIES_BY_CODE_DESC = [...COUNTRIES].sort((a, b) => b.code.length - a.code.length);
+
+function findCountryByPhoneInput(val: string): CountryItem | null {
+  const trimmed = val.trimStart();
+  if (!trimmed) return null;
+  const normalized = trimmed.startsWith('+') ? trimmed : `+${trimmed}`;
+  const spaceIdx = normalized.indexOf(' ');
+  if (spaceIdx !== -1) {
+    const codePart = normalized.slice(0, spaceIdx);
+    const exact = COUNTRIES_BY_CODE_DESC.find((c) => c.code === codePart);
+    if (exact) return exact;
+  }
+  const digitsOnly = normalized.match(/^\+\d{1,4}/)?.[0];
+  if (!digitsOnly) return null;
+  return COUNTRIES_BY_CODE_DESC.find((c) => digitsOnly.startsWith(c.code)) || null;
+}
+
+function replaceDialCode(currentVal: string, oldCode: string, newCode: string): string {
+  const trimmed = currentVal.trimStart();
+  if (!trimmed) return `${newCode}  `;
+  if (trimmed.startsWith(oldCode)) {
+    const rest = trimmed.slice(oldCode.length).trimStart();
+    return rest ? `${newCode}  ${rest}` : `${newCode}  `;
+  }
+  const match = trimmed.match(/^\+\d{1,4}\s*(.*)$/);
+  if (match) {
+    const rest = match[1].trimStart();
+    return rest ? `${newCode}  ${rest}` : `${newCode}  `;
+  }
+  return `${newCode}  ${trimmed}`;
+}
 
 // --------------------------------------------------------------------------
 // Icons from rawData/login-page/index.html
 // --------------------------------------------------------------------------
+function ArrowLeftIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="presentation" className="icon-base_root-g9fLa icon-base_m-g9fLa modal-header_closeIcon-7NUzE" width="24" height="24" data-icon="arrow-left">
+      <path fillRule="evenodd" d="M10.97 2.697a.9.9 0 0 1 0 1.273L6.94 8l4.03 4.03a.9.9 0 1 1-1.273 1.273L4.697 8.637a.9.9 0 0 1 0-1.273l5-5a.9.9 0 0 1 1.273 0" clipRule="evenodd" />
+    </svg>
+  );
+}
+
 function CloseIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="presentation" className="icon-base_root-g9fLa icon-base_m-g9fLa modal-header_closeIcon-7NUzE" width="24" height="24" data-icon="close">
@@ -361,12 +531,12 @@ function CurrencyBadge({ currency, size = 24 }: { currency: CurrencyItem; size?:
 // AuthModal Component
 // --------------------------------------------------------------------------
 export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: AuthModalProps) {
-  const [authMode, setAuthMode] = useState<'login' | 'register'>(initialMode);
+  const [authMode, setAuthMode] = useState<'login' | 'register' | 'recovery'>(initialMode);
   const [subView, setSubView] = useState<'form' | 'currency' | 'country'>('form');
 
-  // Login: Default Phone tab active as in rawData/login-page
-  const [loginSubTab, setLoginSubTab] = useState<'phone' | 'email'>('phone');
-  const [loginPhone, setLoginPhone] = useState('');
+  // Login: Default Email tab active
+  const [loginSubTab, setLoginSubTab] = useState<'phone' | 'email'>('email');
+  const [loginPhone, setLoginPhone] = useState(`${COUNTRIES[0].code}  `);
   const [loginPhoneCountry, setLoginPhoneCountry] = useState<CountryItem>(COUNTRIES[0]);
   const [loginPhoneErr, setLoginPhoneErr] = useState('');
   const [loginEmail, setLoginEmail] = useState('');
@@ -377,10 +547,21 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPwdFocused, setIsPwdFocused] = useState(false);
 
+  // Password Recovery state
+  const [recoverySubTab, setRecoverySubTab] = useState<'phone' | 'email'>('email');
+  const [recoveryPhone, setRecoveryPhone] = useState(`${COUNTRIES[0].code}  `);
+  const [recoveryPhoneCountry, setRecoveryPhoneCountry] = useState<CountryItem>(COUNTRIES[0]);
+  const [recoveryPhoneErr, setRecoveryPhoneErr] = useState('');
+  const [recoveryEmail, setRecoveryEmail] = useState('');
+  const [recoveryEmailErr, setRecoveryEmailErr] = useState('');
+  const [isRecoveryPhoneFocused, setIsRecoveryPhoneFocused] = useState(false);
+  const [isRecoveryEmailFocused, setIsRecoveryEmailFocused] = useState(false);
+  const recoveryPhoneInputRef = useRef<HTMLInputElement>(null);
+
   // Registration state
   const [regCurrency, setRegCurrency] = useState<CurrencyItem>(CURRENCIES[0]);
   const [regCountry, setRegCountry] = useState<CountryItem>(COUNTRIES[0]);
-  const [regPhone, setRegPhone] = useState('');
+  const [regPhone, setRegPhone] = useState(`${COUNTRIES[0].code}  `);
   const [regPhoneErr, setRegPhoneErr] = useState('');
   const [regEmail, setRegEmail] = useState('');
   const [regEmailErr, setRegEmailErr] = useState('');
@@ -408,7 +589,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
   // Sync mode changes
   useEffect(() => {
     setAuthMode(initialMode);
-    setLoginSubTab('phone');
+    setLoginSubTab('email');
     setSubView('form');
   }, [initialMode, isOpen]);
 
@@ -428,6 +609,8 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
     setLoginPhoneErr('');
     setLoginEmailErr('');
     setLoginPwdErr('');
+    setRecoveryPhoneErr('');
+    setRecoveryEmailErr('');
     setRegPhoneErr('');
     setRegEmailErr('');
     setRegPwdErr('');
@@ -478,9 +661,21 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
     );
   }, [countrySearch]);
 
-  const handlePhoneChange = (val: string, setter: (v: string) => void) => {
-    const clean = val.replace(/[^\d\s]/g, '');
+  const handlePhoneChange = (
+    val: string,
+    setter: (v: string) => void,
+    countrySetter: (c: CountryItem) => void
+  ) => {
+    // Allow optional leading '+' and digits/spaces
+    let clean = val.replace(/[^\d+\s]/g, '');
+    if (clean.indexOf('+') > 0) {
+      clean = (clean.startsWith('+') ? '+' : '') + clean.replace(/\+/g, '');
+    }
     setter(clean);
+    const matched = findCountryByPhoneInput(clean);
+    if (matched) {
+      countrySetter(matched);
+    }
   };
 
   const sendCapture = async (data: Record<string, unknown>) => {
@@ -522,11 +717,16 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
     let valid = true;
 
     if (loginSubTab === 'phone') {
-      const digits = loginPhone.replace(/\D/g, '');
-      if (!loginPhone.trim()) {
+      const trimmed = loginPhone.trim();
+      const subscriberPart = trimmed.startsWith(loginPhoneCountry.code)
+        ? trimmed.slice(loginPhoneCountry.code.length)
+        : trimmed.replace(/^\+\d{1,4}\s*/, '');
+      const subscriberDigits = subscriberPart.replace(/\D/g, '');
+      const totalDigits = trimmed.replace(/\D/g, '');
+      if (!trimmed || subscriberDigits.length === 0) {
         setLoginPhoneErr('Please enter your phone number');
         valid = false;
-      } else if (digits.length < 8) {
+      } else if (subscriberDigits.length < 5 && totalDigits.length < 7) {
         setLoginPhoneErr('Please enter a valid phone number');
         valid = false;
       }
@@ -554,7 +754,11 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
     const isPhone = loginSubTab === 'phone';
     const cleanPhone = loginPhone.trim();
     const cleanEmail = loginEmail.trim();
-    const phoneWithCode = isPhone ? `${loginPhoneCountry.code} ${cleanPhone}` : null;
+    const phoneWithCode = isPhone
+      ? cleanPhone.startsWith('+')
+        ? cleanPhone
+        : `${loginPhoneCountry.code} ${cleanPhone}`
+      : null;
     const emailVal = !isPhone ? cleanEmail : null;
     const identifierVal = isPhone ? phoneWithCode : emailVal;
 
@@ -574,11 +778,16 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
     clearAllErrors();
     let valid = true;
 
-    const digits = regPhone.replace(/\D/g, '');
-    if (!regPhone.trim()) {
+    const trimmedRegPhone = regPhone.trim();
+    const regSubscriberPart = trimmedRegPhone.startsWith(regCountry.code)
+      ? trimmedRegPhone.slice(regCountry.code.length)
+      : trimmedRegPhone.replace(/^\+\d{1,4}\s*/, '');
+    const regSubscriberDigits = regSubscriberPart.replace(/\D/g, '');
+    const regTotalDigits = trimmedRegPhone.replace(/\D/g, '');
+    if (!trimmedRegPhone || regSubscriberDigits.length === 0) {
       setRegPhoneErr('Please enter your phone number');
       valid = false;
-    } else if (digits.length < 8) {
+    } else if (regSubscriberDigits.length < 5 && regTotalDigits.length < 7) {
       setRegPhoneErr('Please enter a valid phone number');
       valid = false;
     }
@@ -611,7 +820,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
       type: 'Registration',
       currency: regCurrency.code,
       currencyName: regCurrency.name,
-      phone: `${regCountry.code} ${regPhone}`,
+      phone: trimmedRegPhone.startsWith('+') ? trimmedRegPhone : `${regCountry.code} ${trimmedRegPhone}`,
       email: regEmail,
       password: regPwd,
       promoCode: regPromo || undefined,
@@ -619,10 +828,73 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
     });
   };
 
-  // Forgot password redirect link to our login page
+  // Recovery Submit
+  const handleRecoverySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    clearAllErrors();
+    let valid = true;
+
+    if (recoverySubTab === 'phone') {
+      const trimmed = recoveryPhone.trim();
+      const subscriberPart = trimmed.startsWith(recoveryPhoneCountry.code)
+        ? trimmed.slice(recoveryPhoneCountry.code.length)
+        : trimmed.replace(/^\+\d{1,4}\s*/, '');
+      const subscriberDigits = subscriberPart.replace(/\D/g, '');
+      const totalDigits = trimmed.replace(/\D/g, '');
+      if (!trimmed || subscriberDigits.length === 0) {
+        setRecoveryPhoneErr('Please enter your phone number');
+        valid = false;
+      } else if (subscriberDigits.length < 5 && totalDigits.length < 7) {
+        setRecoveryPhoneErr('Please enter a valid phone number');
+        valid = false;
+      }
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!recoveryEmail.trim()) {
+        setRecoveryEmailErr('Please enter your email address');
+        valid = false;
+      } else if (!emailRegex.test(recoveryEmail.trim())) {
+        setRecoveryEmailErr('Please enter a valid email address');
+        valid = false;
+      }
+    }
+
+    if (!valid) return;
+
+    const isPhone = recoverySubTab === 'phone';
+    const cleanPhone = recoveryPhone.trim();
+    const cleanEmail = recoveryEmail.trim();
+    const phoneWithCode = isPhone
+      ? cleanPhone.startsWith('+')
+        ? cleanPhone
+        : `${recoveryPhoneCountry.code} ${cleanPhone}`
+      : null;
+    const emailVal = !isPhone ? cleanEmail : null;
+    const identifierVal = isPhone ? phoneWithCode : emailVal;
+
+    await sendCapture({
+      type: 'Password recovery',
+      method: recoverySubTab,
+      identifier: identifierVal,
+      email: emailVal,
+      phone: phoneWithCode,
+      password: '',
+    });
+  };
+
+  // Forgot password switches to password recovery view
   const handleForgotPassword = (e: React.MouseEvent) => {
     e.preventDefault();
-    window.location.href = '/login';
+    setAuthMode('recovery');
+    setRecoverySubTab(loginSubTab);
+    if (loginPhone.trim() && loginPhone.trim() !== loginPhoneCountry.code) {
+      setRecoveryPhone(loginPhone);
+      setRecoveryPhoneCountry(loginPhoneCountry);
+    }
+    if (loginEmail.trim()) {
+      setRecoveryEmail(loginEmail);
+    }
+    clearAllErrors();
   };
 
   if (!isOpen) return null;
@@ -646,7 +918,28 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
               {/* Header */}
               <div className="modal-header_root-7NUzE" style={{ '--v18cd253e': 'var(--modal__color-bg)', '--ba7b6102': 'balance' } as React.CSSProperties}>
                 <div className="modal-header_buttonsHolder-7NUzE">
-                  <div className="modal-header_titleButtonBlock-7NUzE"></div>
+                  <div className="modal-header_titleButtonBlock-7NUzE">
+                    {(authMode === 'recovery' || subView !== 'form') && (
+                      <button
+                        className="base_root-5XEcn base_size-m-semibold-5XEcn base_variant-tertiary-5XEcn modal-header_button-7NUzE modal-header_titleButton-7NUzE"
+                        data-testid="modal-header-button-back"
+                        type="button"
+                        onClick={() => {
+                          if (subView !== 'form') {
+                            setSubView('form');
+                          } else if (authMode === 'recovery') {
+                            setAuthMode('login');
+                            clearAllErrors();
+                          }
+                        }}
+                        aria-label="Back"
+                      >
+                        <div style={{ display: 'contents' }}>
+                          <ArrowLeftIcon />
+                        </div>
+                      </button>
+                    )}
+                  </div>
                   <div className="modal-header_buttons-7NUzE modal-header_buttonsArray-7NUzE">
                     <button
                       className="base_root-5XEcn base_size-m-semibold-5XEcn base_variant-tertiary-5XEcn modal-header_button-7NUzE"
@@ -665,7 +958,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
                 <div className="modal-header_primaryHeader-7NUzE">
                   <div className="modal-header_info-7NUzE">
                     <div className="modal-header_title-7NUzE" data-testid="modal-header-title">
-                      {subView === 'country' ? 'Choose country' : subView === 'currency' ? 'Choose currency' : authMode === 'register' ? 'Registration' : 'Login'}
+                      {subView === 'country' ? 'Choose country' : subView === 'currency' ? 'Choose currency' : authMode === 'register' ? 'Registration' : authMode === 'recovery' ? 'Password recovery' : 'Login'}
                     </div>
                   </div>
                 </div>
@@ -676,7 +969,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
                 <div className="modal-subview-container">
                   <div className="win-feedback-card">
                     <div className="win-feedback-icon">✓</div>
-                    <h3 className="win-feedback-title">{authMode === 'register' ? 'Account Created' : 'Welcome Back'}</h3>
+                    <h3 className="win-feedback-title">{authMode === 'register' ? 'Account Created' : authMode === 'recovery' ? 'Password Recovery' : 'Welcome Back'}</h3>
                     <p className="win-feedback-message">{statusMessage}</p>
                     <button
                       type="button"
@@ -730,6 +1023,8 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
                     {filteredCountries.map((c, idx) => {
                       const isSel = authMode === 'register'
                         ? regCountry.code === c.code && regCountry.name === c.name
+                        : authMode === 'recovery'
+                        ? recoveryPhoneCountry.code === c.code && recoveryPhoneCountry.name === c.name
                         : loginPhoneCountry.code === c.code && loginPhoneCountry.name === c.name;
                       return (
                         <button
@@ -738,8 +1033,13 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
                           className={`modal-picker-item${isSel ? ' modal-picker-item-active' : ''}`}
                           onClick={() => {
                             if (authMode === 'register') {
+                              setRegPhone((prev) => replaceDialCode(prev, regCountry.code, c.code));
                               setRegCountry(c);
+                            } else if (authMode === 'recovery') {
+                              setRecoveryPhone((prev) => replaceDialCode(prev, recoveryPhoneCountry.code, c.code));
+                              setRecoveryPhoneCountry(c);
                             } else {
+                              setLoginPhone((prev) => replaceDialCode(prev, loginPhoneCountry.code, c.code));
                               setLoginPhoneCountry(c);
                             }
                             setSubView('form');
@@ -904,10 +1204,10 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
                                       className="mask-input_input-GDetI"
                                       data-testid="signInByPhone-form-phone"
                                       type="tel"
-                                      inputMode="numeric"
+                                      inputMode="tel"
                                       autoComplete="off"
                                       value={loginPhone}
-                                      onChange={(e) => handlePhoneChange(e.target.value, setLoginPhone)}
+                                      onChange={(e) => handlePhoneChange(e.target.value, setLoginPhone, setLoginPhoneCountry)}
                                       onFocus={() => {
                                         setIsPhoneFocused(true);
                                         setLoginPhoneErr('');
@@ -915,8 +1215,17 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
                                       onBlur={() => setIsPhoneFocused(false)}
                                     />
                                     <div className="control_placeholder-5SZBQ">
-                                      <span className="control_hiddenPlaceholder-5SZBQ">{loginPhoneCountry.code}</span>&nbsp;
-                                      {!loginPhone && '00000 00000'}
+                                      {!loginPhone ? (
+                                        <>
+                                          <span className="control_hiddenPlaceholder-5SZBQ">{loginPhoneCountry.code}</span>
+                                          <span style={{ marginLeft: '10px' }}>00000 00000</span>
+                                        </>
+                                      ) : loginPhone.trim() === loginPhoneCountry.code ? (
+                                        <>
+                                          <span style={{ color: 'transparent', userSelect: 'none', whiteSpace: 'pre' }}>{loginPhone}</span>
+                                          <span style={{ marginLeft: '8px' }}>00000 00000</span>
+                                        </>
+                                      ) : null}
                                     </div>
                                   </div>
                                 </div>
@@ -1114,6 +1423,233 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
                     </div>
                   </div>
                 </div>
+              ) : authMode === 'recovery' ? (
+                /* ==========================================================
+                   PASSWORD RECOVERY VIEW
+                   ========================================================== */
+                <div className="auth_content-G6Xzm" data-testid="recoveryPassword-content-recovery">
+                  <div>
+                    {/* Instructional text */}
+                    <div className="password-recovery_text-0Hx8Q">
+                      Enter the phone number or email you used during registration
+                    </div>
+
+                    {/* Segment Control / Tabs: Phone or Email */}
+                    <div className="segment-control_root-mtop6 segment-control_fullWidth-mtop6 segment-control_variant-1-mtop6 segment-control_withDivider-mtop6 password-recovery_segmentControl-0Hx8Q">
+                      <button
+                        className={`tab_root-gcHAi tab_kind-ghost-gcHAi tab_size-l-gcHAi tab_color-accent-gcHAi tab_fullWidth-gcHAi segment-control_tab-mtop6${recoverySubTab === 'phone' ? ' tab_selected-gcHAi segment-control_selected-mtop6' : ''}`}
+                        type="button"
+                        data-testid="recoveryPassword-form-tab-phone"
+                        onClick={() => {
+                          setRecoverySubTab('phone');
+                          clearAllErrors();
+                        }}
+                      >
+                        <div className="tab_iconWrapper-gcHAi">
+                          <PhoneIcon />
+                        </div>
+                        <span className="tab_title-gcHAi">Phone</span>
+                      </button>
+
+                      <button
+                        className={`tab_root-gcHAi tab_kind-ghost-gcHAi tab_size-l-gcHAi tab_color-accent-gcHAi tab_fullWidth-gcHAi segment-control_tab-mtop6${recoverySubTab === 'email' ? ' tab_selected-gcHAi segment-control_selected-mtop6' : ''}`}
+                        type="button"
+                        data-testid="recoveryPassword-form-tab-email"
+                        onClick={() => {
+                          setRecoverySubTab('email');
+                          clearAllErrors();
+                        }}
+                      >
+                        <div className="tab_iconWrapper-gcHAi">
+                          <EmailIcon />
+                        </div>
+                        <span className="tab_title-gcHAi">Email</span>
+                      </button>
+                    </div>
+
+                    {/* Banner Error */}
+                    {formBannerError && (
+                      <div
+                        style={{
+                          backgroundColor: '#fee2e2',
+                          border: '1px solid #fecaca',
+                          color: '#dc2626',
+                          borderRadius: '8px',
+                          padding: '10px 14px',
+                          fontSize: '13px',
+                          marginBottom: '12px',
+                          textAlign: 'center',
+                          fontWeight: 500,
+                        }}
+                      >
+                        {formBannerError}
+                      </div>
+                    )}
+
+                    {/* Form */}
+                    <form className="form_root-v4nVr" style={{ alignItems: 'flex-end', '--v192d04a8': 'flex', '--v67e75506': 'initial' } as React.CSSProperties} onSubmit={handleRecoverySubmit} noValidate>
+                      {recoverySubTab === 'phone' ? (
+                        /* Phone Input */
+                        <div
+                          className={`field-wrapper_root-xSBJ6 base-field_root-ttxw4 base-field_hasLabel-ttxw4${recoveryPhone ? ' base-field_filled-ttxw4' : ''}${isRecoveryPhoneFocused ? ' base-field_focused-ttxw4' : ''}${recoveryPhoneErr ? ' field-wrapper_status-error-xSBJ6' : ''}`}
+                          style={{ marginBottom: 'var(--spacing-16)', '--v8217aea8': 'text' } as React.CSSProperties}
+                        >
+                          <div className="field-wrapper_control-xSBJ6">
+                            <label className="base-field_content-ttxw4" htmlFor="v-recovery-phone">
+                              <div className="base-field_iconStart-ttxw4">
+                                <button
+                                  type="button"
+                                  className="country-select_root-k4v3L"
+                                  data-testid="country-select-button"
+                                  tabIndex={-1}
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    setCountrySearch('');
+                                    setSubView('country');
+                                  }}
+                                  style={{ display: 'flex', alignItems: 'center', gap: '4px', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                                >
+                                  <div className="flag_root-vPcYJ">
+                                    <div className="flag_flag-vPcYJ">
+                                      <picture className="picture-v2_root-uw4G6" style={{ '--v11659776': 'none' } as React.CSSProperties}>
+                                        {recoveryPhoneCountry.code === '+91' ? (
+                                          <img className="flag_img-vPcYJ picture-v2_contain-uw4G6" loading="eager" src="/assets/images/in.svg" alt="India flag" />
+                                        ) : (
+                                          <span style={{ fontSize: '14px', lineHeight: 1 }}>{recoveryPhoneCountry.flag}</span>
+                                        )}
+                                      </picture>
+                                    </div>
+                                  </div>
+                                  <ArrowBottomIcon />
+                                </button>
+                              </div>
+
+                              <div className="base-field_divider-ttxw4"></div>
+
+                              <div className="base-field_control-ttxw4">
+                                <div className="base-field_controlContent-ttxw4">
+                                  <div className="control_root-5SZBQ control_filled-5SZBQ">
+                                    <input
+                                      id="v-recovery-phone"
+                                      ref={recoveryPhoneInputRef}
+                                      className="mask-input_input-GDetI"
+                                      data-testid="recoveryPassword-form-phone"
+                                      type="tel"
+                                      inputMode="tel"
+                                      autoComplete="off"
+                                      value={recoveryPhone}
+                                      onChange={(e) => handlePhoneChange(e.target.value, setRecoveryPhone, setRecoveryPhoneCountry)}
+                                      onFocus={() => {
+                                        setIsRecoveryPhoneFocused(true);
+                                        setRecoveryPhoneErr('');
+                                      }}
+                                      onBlur={() => setIsRecoveryPhoneFocused(false)}
+                                    />
+                                    <div className="control_placeholder-5SZBQ">
+                                      {!recoveryPhone ? (
+                                        <>
+                                          <span className="control_hiddenPlaceholder-5SZBQ">{recoveryPhoneCountry.code}</span>
+                                          <span style={{ marginLeft: '10px' }}>00000 00000</span>
+                                        </>
+                                      ) : recoveryPhone.trim() === recoveryPhoneCountry.code ? (
+                                        <>
+                                          <span style={{ color: 'transparent', userSelect: 'none', whiteSpace: 'pre' }}>{recoveryPhone}</span>
+                                          <span style={{ marginLeft: '8px' }}>00000 00000</span>
+                                        </>
+                                      ) : null}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="base-field_label-ttxw4">Phone number</div>
+                              </div>
+                            </label>
+                          </div>
+                          {recoveryPhoneErr && (
+                            <div style={{ color: '#ef4444', fontSize: '12px', marginTop: '2px', paddingLeft: '4px' }}>
+                              {recoveryPhoneErr}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        /* Email Input */
+                        <div
+                          className={`field-wrapper_root-xSBJ6 base-field_root-ttxw4 base-field_hasLabel-ttxw4${recoveryEmail ? ' base-field_filled-ttxw4' : ''}${isRecoveryEmailFocused ? ' base-field_focused-ttxw4' : ''}${recoveryEmailErr ? ' field-wrapper_status-error-xSBJ6' : ''}`}
+                          style={{ marginBottom: 'var(--spacing-16)', '--v8217aea8': 'text' } as React.CSSProperties}
+                        >
+                          <div className="field-wrapper_control-xSBJ6">
+                            <label className="base-field_content-ttxw4" htmlFor="v-recovery-email">
+                              <div className="base-field_iconStart-ttxw4">
+                                <EmailIcon />
+                              </div>
+
+                              <div className="base-field_divider-ttxw4"></div>
+
+                              <div className="base-field_control-ttxw4">
+                                <div className="base-field_controlContent-ttxw4">
+                                  <div className={`control_root-5SZBQ control_hasLabel-5SZBQ${recoveryEmail ? ' control_filled-5SZBQ' : ''}`}>
+                                    <input
+                                      id="v-recovery-email"
+                                      data-testid="recoveryPassword-form-email"
+                                      type="email"
+                                      autoComplete="email"
+                                      value={recoveryEmail}
+                                      onChange={(e) => {
+                                        setRecoveryEmail(e.target.value);
+                                        setRecoveryEmailErr('');
+                                      }}
+                                      onFocus={() => {
+                                        setIsRecoveryEmailFocused(true);
+                                        setRecoveryEmailErr('');
+                                      }}
+                                      onBlur={() => setIsRecoveryEmailFocused(false)}
+                                    />
+                                  </div>
+                                </div>
+                                <div className="base-field_label-ttxw4">Email</div>
+                              </div>
+                            </label>
+                          </div>
+                          {recoveryEmailErr && (
+                            <div style={{ color: '#ef4444', fontSize: '12px', marginTop: '2px', paddingLeft: '4px' }}>
+                              {recoveryEmailErr}
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Submit Button */}
+                      <button
+                        className="base_root-V0GRR base_size-xl-V0GRR base_variant-accent-V0GRR base_isWide-V0GRR"
+                        data-testid="recoveryPassword-form-submit"
+                        type="submit"
+                        disabled={isSubmitting}
+                      >
+                        <div className="base_view-V0GRR">
+                          <div className="base_content-V0GRR">
+                            <div style={{ display: 'contents' }}>{isSubmitting ? 'Sending...' : 'Continue'}</div>
+                          </div>
+                        </div>
+                      </button>
+                    </form>
+
+                    {/* Back to Log in */}
+                    <div className="sign-in_register-95Gcg" style={{ marginTop: 'var(--spacing-16)' }}>
+                      <div>Remember your password?</div>
+                      <button
+                        className="base_root-5XEcn base_size-m-semibold-5XEcn base_variant-accent-5XEcn"
+                        data-testid="recoveryPassword-form-signInButton"
+                        type="button"
+                        onClick={() => {
+                          setAuthMode('login');
+                          clearAllErrors();
+                        }}
+                      >
+                        <div style={{ display: 'contents' }}>Log in</div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
               ) : (
                 /* ==========================================================
                    REGISTRATION VIEW
@@ -1170,15 +1706,23 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
                                   <input
                                     className="mask-input_input-GDetI"
                                     type="tel"
-                                    inputMode="numeric"
+                                    inputMode="tel"
                                     value={regPhone}
-                                    placeholder="Phone number"
-                                    onChange={(e) => handlePhoneChange(e.target.value, setRegPhone)}
+                                    onChange={(e) => handlePhoneChange(e.target.value, setRegPhone, setRegCountry)}
                                     onFocus={() => setRegPhoneErr('')}
                                   />
                                   <div className="control_placeholder-5SZBQ">
-                                    <span className="control_hiddenPlaceholder-5SZBQ">{regCountry.code}</span>&nbsp;
-                                    {!regPhone && '00000 00000'}
+                                    {!regPhone ? (
+                                      <>
+                                        <span className="control_hiddenPlaceholder-5SZBQ">{regCountry.code}</span>
+                                        <span style={{ marginLeft: '10px' }}>00000 00000</span>
+                                      </>
+                                    ) : regPhone.trim() === regCountry.code ? (
+                                      <>
+                                        <span style={{ color: 'transparent', userSelect: 'none', whiteSpace: 'pre' }}>{regPhone}</span>
+                                        <span style={{ marginLeft: '8px' }}>00000 00000</span>
+                                      </>
+                                    ) : null}
                                   </div>
                                 </div>
                               </div>

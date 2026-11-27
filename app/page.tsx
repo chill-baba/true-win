@@ -5,10 +5,10 @@ import LoginModal from './login';
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
+  const [authMode, setAuthMode] = useState<'login' | 'register' | 'recovery'>('login');
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  const openAuth = (mode: 'login' | 'register') => {
+  const openAuth = (mode: 'login' | 'register' | 'recovery') => {
     setAuthMode(mode);
     setModalOpen(true);
   };
@@ -16,7 +16,7 @@ export default function Home() {
   // Expose helper on window for debugging or direct triggers
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (window as any).openAuthModal = (mode: 'login' | 'register' = 'login') => {
+    (window as any).openAuthModal = (mode: 'login' | 'register' | 'recovery' = 'login') => {
       openAuth(mode);
     };
 
@@ -27,6 +27,8 @@ export default function Home() {
       setTimeout(() => openAuth('register'), 0);
     } else if (authQuery === 'login') {
       setTimeout(() => openAuth('login'), 0);
+    } else if (authQuery === 'recovery' || authQuery === 'forgot' || authQuery === 'forgot-password') {
+      setTimeout(() => openAuth('recovery'), 0);
     }
   }, []);
 
@@ -47,6 +49,13 @@ export default function Home() {
         e.data === 'registration'
       ) {
         openAuth('register');
+      } else if (
+        e.data === 'open-recovery-modal' ||
+        e.data.type === 'open-recovery-modal' ||
+        e.data === 'recovery' ||
+        e.data === 'forgot'
+      ) {
+        openAuth('recovery');
       }
     };
     window.addEventListener('message', handler);
