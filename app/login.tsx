@@ -1287,7 +1287,6 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
                       {/* Password Input */}
                       <div
                         className={`field-wrapper_root-xSBJ6 base-field_root-ttxw4 base-field_hasLabel-ttxw4${loginPwd ? ' base-field_filled-ttxw4' : ''}${isPwdFocused ? ' base-field_focused-ttxw4' : ''}${loginPwdErr ? ' field-wrapper_status-error-xSBJ6' : ''}`}
-                        title="Password"
                         style={{ marginBottom: 'var(--spacing-8)', '--v8217aea8': 'text' } as React.CSSProperties}
                       >
                         <div className="field-wrapper_control-xSBJ6">

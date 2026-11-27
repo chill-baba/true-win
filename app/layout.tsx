@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "1win | Online Casino & Sports Betting",
   description: "Official 1win sports betting and online casino platform.",
+  icons: {
+    icon: "data:,",
+  },
 };
 
 export default function RootLayout({
@@ -35,6 +38,8 @@ export default function RootLayout({
       }}
     >
       <head>
+        <link rel="icon" href="data:," />
+        <link rel="shortcut icon" href="data:," />
         <link rel="stylesheet" href="/css/variables.css" />
         <link rel="stylesheet" href="/css/login.css" />
       </head>

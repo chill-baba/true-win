@@ -273,12 +273,21 @@ export async function GET(request: NextRequest) {
         /<meta[^>]+http-equiv=["']?Content-Security-Policy["']?[^>]*>/gi,
         ''
       );
+      // Remove any upstream favicons, title images, or apple touch icons
+      body = body.replace(
+        /<link[^>]+rel=["']?(?:shortcut )?icon["']?[^>]*>/gi,
+        ''
+      );
+      body = body.replace(
+        /<link[^>]+rel=["']?apple-touch-(?:icon|startup-image)["']?[^>]*>/gi,
+        ''
+      );
       body = rewriteUrls(body, BASE);
 
-      // Inject fetch/XHR interceptor at the top of <head> (without <base> so module scripts don't bypass proxy and hit CORS)
+      // Inject fetch/XHR interceptor and blank favicon at the top of <head>
       body = body.replace(
         /<head([^>]*)>/i,
-        `<head$1>${FETCH_INTERCEPTOR}`
+        `<head$1><link rel="icon" href="data:,">${FETCH_INTERCEPTOR}`
       );
 
       // Inject topbar and postMessage bridge script before </body>

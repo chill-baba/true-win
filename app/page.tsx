@@ -76,7 +76,6 @@ export default function Home() {
           border: 'none',
           zIndex: 1,
         }}
-        title="1win"
       />
 
       {/* Unified Login & Registration Overlay Modal */}
