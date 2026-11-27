@@ -112,122 +112,225 @@ export const COUNTRIES: CountryItem[] = [
 ];
 
 // --------------------------------------------------------------------------
-// Icons (Fine-tuned with decreased scale to match image replica exactly)
+// Icons from rawData/login-page/index.html
 // --------------------------------------------------------------------------
 function CloseIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-      <path d="M2 2l12 12M14 2L2 14" />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="presentation" className="icon-base_root-g9fLa icon-base_m-g9fLa modal-header_closeIcon-7NUzE" width="24" height="24" data-icon="close">
+      <path fillRule="evenodd" d="M3.364 3.364a.9.9 0 0 1 1.272 0L8 6.727l3.364-3.363a.9.9 0 0 1 1.272 1.272L9.274 8l3.364 3.364a.9.9 0 1 1-1.273 1.272L8 9.274l-3.364 3.364a.9.9 0 1 1-1.272-1.273L6.727 8 3.364 4.636a.9.9 0 0 1 0-1.272" clipRule="evenodd" />
     </svg>
   );
 }
 
-function ChevronDownIcon({ className = '' }: { className?: string }) {
+function PhoneIcon() {
   return (
-    <svg width="10" height="7" viewBox="0 0 10 7" fill="none" className={className}>
-      <path d="M1 1.5L5 5.5L9 1.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="presentation" className="icon-base_root-g9fLa icon-base_m-g9fLa" width="24" height="24" data-icon="call">
+      <g clipPath="url(#call_e7a4be__a)">
+        <path fillRule="evenodd" d="M7.606 8.398c3.359 3.358 4.121-.527 6.26 1.61 2.062 2.062 3.247 2.475.634 5.087-.327.262-2.406 3.426-9.713-3.878C-2.521 3.91.641 1.829.904 1.502c2.62-2.619 3.025-1.427 5.087.635C8.13 4.275 4.246 5.04 7.606 8.397" clipRule="evenodd" />
+      </g>
+      <defs>
+        <clipPath id="call_e7a4be__a">
+          <path fill="#fff" d="M0 0h16v16H0z" />
+        </clipPath>
+      </defs>
     </svg>
   );
 }
 
-function SearchIcon() {
+function EmailIcon() {
   return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-      <circle cx="11" cy="11" r="8" />
-      <path d="M21 21l-4.35-4.35" />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="presentation" className="icon-base_root-g9fLa icon-base_m-g9fLa" width="24" height="24" data-icon="email">
+      <path fillRule="evenodd" d="M14.815 1.985A4.05 4.05 0 0 0 11.951.8H4.048A4.04 4.04 0 0 0 0 4.84v6.044C0 13.116 1.815 15.2 4.048 15.2h7.903c2.233 0 4.049-2.084 4.049-4.316V4.84a4.03 4.03 0 0 0-1.185-2.855M3.583 5.577a.64.64 0 1 0-.816.987L6.065 9.29a3.04 3.04 0 0 0 3.876 0l3.292-2.726a.64.64 0 1 0-.816-.986L9.124 8.303a1.76 1.76 0 0 1-2.243 0z" clipRule="evenodd" />
     </svg>
   );
 }
 
-function PhoneTabIcon() {
+function ArrowBottomIcon() {
   return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: '6px', flexShrink: 0 }}>
-      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-    </svg>
-  );
-}
-
-function EmailTabIcon() {
-  return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: '6px', flexShrink: 0 }}>
-      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-    </svg>
-  );
-}
-
-function EnvelopeIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="#6c727f" style={{ flexShrink: 0 }}>
-      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="presentation" className="icon-base_root-g9fLa icon-base_m-g9fLa" width="24" height="24" data-icon="arrow-bottom">
+      <path fillRule="evenodd" d="M2.697 5.03a.9.9 0 0 1 1.273 0L8 9.06l4.03-4.03a.9.9 0 1 1 1.273 1.273L8.637 10.97a.9.9 0 0 1-1.273 0L2.697 6.303a.9.9 0 0 1 0-1.273" clipRule="evenodd" />
     </svg>
   );
 }
 
 function LockIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="#6c727f" style={{ flexShrink: 0 }}>
-      <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="presentation" className="icon-base_root-g9fLa" width="16" height="16" icon-size="s" data-icon="lock">
+      <path fillRule="evenodd" d="M2.165 6.579q-.262.297-.436.656-.048.101-.086.206c-.2.557-.2 1.242-.2 2.47V12.3c.007.979.045 1.546.28 2.046l.005.011a2.9 2.9 0 0 0 1.363 1.356c.518.252 1.115.284 2.184.287l.489.001h4.472l.642-.001c.973-.007 1.537-.047 2.031-.287q.105-.05.208-.109c.494-.285.9-.722 1.154-1.247l.005-.011c.21-.448.264-.95.277-1.75.004-.268.004-.57.004-.916V9.912q0-.417-.002-.757c-.008-.776-.043-1.283-.198-1.714a2 2 0 0 0-.086-.206 2.944 2.944 0 0 0-1.392-1.378 2.5 2.5 0 0 0-.578-.175V4.28a4.3 4.3 0 0 0-.21-1.299 1 1 0 0 0-.025-.09A4.28 4.28 0 0 0 9.876.432a4.28 4.28 0 0 0-3.752 0 4.28 4.28 0 0 0-2.19 2.457 1 1 0 0 0-.025.091c-.135.413-.208.85-.21 1.3v1.4a2.5 2.5 0 0 0-.614.193 2.9 2.9 0 0 0-.92.705m3.599-.988q-.456 0-.822.003v-1.31A3.067 3.067 0 0 1 8 1.245a3.064 3.064 0 0 1 3.057 3.04v1.309q-.365-.004-.82-.003zM8.64 9.94a.64.64 0 0 0-1.28 0v1.778a.64.64 0 1 0 1.28 0z" clipRule="evenodd" />
     </svg>
   );
 }
 
-// Social Login Icons - Decreased Scale (~17px) & Clean Black Glyphs
+function SearchIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+      <circle cx="11" cy="11" r="8" />
+      <path d="M21 21l-4.35-4.35" />
+    </svg>
+  );
+}
+
 function GoogleIcon() {
   return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
-      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" role="presentation" className="icon-base_root-g9fLa base_icon-HuD6g base_theme-monochrome-HuD6g base_default-HuD6g" width="36" height="36" data-icon="google">
+      <g className="google_7e5e22__color">
+        <path fill="#f1f1f1" d="M0 16c0-5.6 0-8.4 1.09-10.54a10 10 0 0 1 4.37-4.37C7.6 0 10.4 0 16 0h4c5.6 0 8.4 0 10.54 1.09a10 10 0 0 1 4.37 4.37C36 7.6 36 10.4 36 16v4c0 5.6 0 8.4-1.09 10.54a10 10 0 0 1-4.37 4.37C28.4 36 25.6 36 20 36h-4c-5.6 0-8.4 0-10.54-1.09a10 10 0 0 1-4.37-4.37C0 28.4 0 25.6 0 20z" />
+        <path fill="#4285f4" d="M28 18.23c0-.68-.056-1.363-.176-2.032h-9.622v3.85h5.51a4.62 4.62 0 0 1-2.04 3.04v2.498h3.288C26.89 23.844 28 21.272 28 18.23" />
+        <path fill="#34a853" d="M18.201 28c2.751 0 5.072-.886 6.762-2.414l-3.287-2.499c-.915.61-2.095.956-3.471.956-2.661 0-4.918-1.76-5.728-4.127H9.085v2.576C10.817 25.869 14.344 28 18.201 28" />
+        <path fill="#fbbc04" d="M12.474 19.917a5.88 5.88 0 0 1 0-3.829v-2.575H9.085a9.83 9.83 0 0 0 0 8.98z" />
+        <path fill="#ea4335" d="M18.201 11.958a5.6 5.6 0 0 1 3.913 1.5l2.913-2.856A9.91 9.91 0 0 0 18.2 8.001c-3.857 0-7.384 2.131-9.116 5.511l3.388 2.576c.806-2.37 3.067-4.13 5.728-4.13" />
+      </g>
+      <g className="google_7e5e22__monochrome">
+        <path d="M0 16c0-5.6 0-8.4 1.09-10.54a10 10 0 0 1 4.37-4.37C7.6 0 10.4 0 16 0h4c5.6 0 8.4 0 10.54 1.09a10 10 0 0 1 4.37 4.37C36 7.6 36 10.4 36 16v4c0 5.6 0 8.4-1.09 10.54a10 10 0 0 1-4.37 4.37C28.4 36 25.6 36 20 36h-4c-5.6 0-8.4 0-10.54-1.09a10 10 0 0 1-4.37-4.37C0 28.4 0 25.6 0 20z" />
+        <g clipPath="url(#google_7e5e22__a)">
+          <path fill="currentColor" d="M22.114 13.457a5.6 5.6 0 0 0-3.913-1.499c-2.66 0-4.92 1.76-5.727 4.129v.001a5.88 5.88 0 0 0 0 3.828h.003c.81 2.367 3.066 4.127 5.728 4.127 1.374 0 2.554-.345 3.468-.954v-.002a4.62 4.62 0 0 0 2.039-3.038h-5.51v-3.85h9.622c.12.668.176 1.351.176 2.031 0 3.041-1.109 5.613-3.038 7.354l.001.002C23.273 27.114 20.953 28 18.201 28c-3.857 0-7.384-2.131-9.116-5.508a9.83 9.83 0 0 1 0-8.98c1.732-3.38 5.259-5.511 9.116-5.511a9.91 9.91 0 0 1 6.826 2.601z" />
+        </g>
+        <defs>
+          <clipPath id="google_7e5e22__a">
+            <path d="M8 8h20v20H8z" />
+          </clipPath>
+        </defs>
+      </g>
     </svg>
   );
 }
 
 function VkIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M13.162 18.994c.609 0 .858-.406.851-.915-.072-1.785.736-2.502 1.545-2.072 1.054.561 1.934 2.378 2.943 2.915.76.406 1.488.246 1.488.246l3.606-.05s1.888-.12.993-1.597c-.073-.12-.524-1.107-2.697-3.125-2.274-2.112-1.97-1.77.77-5.421 1.668-2.224 2.336-3.58 2.128-4.16-.198-.553-1.43-.406-1.43-.406l-4.062.025c-.378.025-.694.137-.847.531 0 0-.648 1.722-1.512 3.187-1.826 3.097-2.556 3.261-2.854 3.066-.694-.454-.52-1.822-.52-2.793 0-3.042.46-4.31-.897-4.64-.45-.109-.78-.182-1.933-.194-1.476-.016-2.724.005-3.431.35-.47.23-.834.746-.612.776.274.037.893.168 1.222.614.425.576.41 1.872.41 1.872s.244 3.581-.571 4.024c-.56.305-1.326-.318-2.973-3.136-.841-1.439-1.479-3.031-1.479-3.031s-.122-.3-.34-.46c-.263-.194-.632-.256-.632-.256l-3.864.025c-.58 0-.796.269-.796.568 0 .532.68 3.197 3.167 6.745 2.217 3.164 5.342 5.093 8.167 5.093z" />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" role="presentation" className="icon-base_root-g9fLa base_icon-HuD6g base_theme-monochrome-HuD6g base_default-HuD6g" width="36" height="36" data-icon="vk">
+      <g className="vk_090179__color">
+        <path fill="#006deb" d="M0 16c0-5.6 0-8.4 1.09-10.54a10 10 0 0 1 4.37-4.37C7.6 0 10.4 0 16 0h4c5.6 0 8.4 0 10.54 1.09a10 10 0 0 1 4.37 4.37C36 7.6 36 10.4 36 16v4c0 5.6 0 8.4-1.09 10.54a10 10 0 0 1-4.37 4.37C28.4 36 25.6 36 20 36h-4c-5.6 0-8.4 0-10.54-1.09a10 10 0 0 1-4.37-4.37C0 28.4 0 25.6 0 20z" style={{ fill: '#006deb' }} />
+        <g clipPath="url(#vk_090179__a)">
+          <path fill="#fff" d="M18.893 24C12.06 24 8.163 19.495 8 12h3.423c.112 5.501 2.636 7.832 4.634 8.312V12h3.224v4.745c1.973-.204 4.047-2.367 4.746-4.745h3.223c-.537 2.93-2.785 5.093-4.384 5.982 1.599.72 4.16 2.607 5.134 6.018h-3.548c-.762-2.282-2.66-4.048-5.172-4.288V24z" style={{ fill: '#fff' }} />
+        </g>
+        <defs>
+          <clipPath id="vk_090179__a">
+            <path fill="#fff" d="M0 0h20v20H0z" transform="translate(8 8)" />
+          </clipPath>
+        </defs>
+      </g>
+      <g className="vk_090179__monochrome">
+        <path d="M0 16c0-5.6 0-8.4 1.09-10.54a10 10 0 0 1 4.37-4.37C7.6 0 10.4 0 16 0h4c5.6 0 8.4 0 10.54 1.09a10 10 0 0 1 4.37 4.37C36 7.6 36 10.4 36 16v4c0 5.6 0 8.4-1.09 10.54a10 10 0 0 1-4.37 4.37C28.4 36 25.6 36 20 36h-4c-5.6 0-8.4 0-10.54-1.09a10 10 0 0 1-4.37-4.37C0 28.4 0 25.6 0 20z" />
+        <g clipPath="url(#vk_090179__b)">
+          <path fill="currentColor" d="M18.893 24C12.06 24 8.163 19.496 8 12h3.423c.112 5.502 2.636 7.832 4.634 8.312V12h3.224v4.745c1.973-.204 4.047-2.367 4.746-4.745h3.223c-.537 2.93-2.785 5.093-4.384 5.982 1.599.72 4.16 2.607 5.134 6.018h-3.548c-.762-2.282-2.66-4.048-5.172-4.288V24z" />
+        </g>
+        <defs>
+          <clipPath id="vk_090179__b">
+            <path d="M8 8h20v20H8z" />
+          </clipPath>
+        </defs>
+      </g>
     </svg>
   );
 }
 
 function TelegramIcon() {
   return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M1.946 9.315c-.522-.174-.527-.455.01-.634L21.044 2.32c.529-.176.832.12.684.638l-3.5 15.35c-.139.608-.544.757-1.026.471l-5.405-3.985-2.607 2.51c-.288.278-.53.51-.986.51l.388-5.508 10.024-9.056c.436-.388-.095-.604-.677-.216L5.617 12.38 1.946 9.315z" />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" role="presentation" className="icon-base_root-g9fLa base_icon-HuD6g base_theme-monochrome-HuD6g base_default-HuD6g" width="36" height="36" data-icon="telegram">
+      <g className="telegram_0c6e0f__color">
+        <path fill="#279ddb" d="M0 16c0-5.6 0-8.4 1.09-10.54a10 10 0 0 1 4.37-4.37C7.6 0 10.4 0 16 0h4c5.6 0 8.4 0 10.54 1.09a10 10 0 0 1 4.37 4.37C36 7.6 36 10.4 36 16v4c0 5.6 0 8.4-1.09 10.54a10 10 0 0 1-4.37 4.37C28.4 36 25.6 36 20 36h-4c-5.6 0-8.4 0-10.54-1.09a10 10 0 0 1-4.37-4.37C0 28.4 0 25.6 0 20z" style={{ fill: '#279ddb' }} />
+        <path fill="#fff" d="M9.226 17.45s8.846-3.63 11.914-4.909c1.175-.511 5.164-2.147 5.164-2.147s1.84-.716 1.687 1.022c-.051.716-.46 3.221-.87 5.931-.613 3.835-1.278 8.028-1.278 8.028s-.102 1.176-.971 1.38c-.87.205-2.3-.715-2.556-.92-.205-.153-3.835-2.454-5.165-3.58-.358-.306-.767-.92.051-1.635 1.841-1.688 4.04-3.784 5.37-5.113.613-.614 1.226-2.046-1.33-.307a437 437 0 0 1-7.21 4.857s-.818.512-2.352.051c-1.533-.46-3.323-1.073-3.323-1.073s-1.227-.767.87-1.585" style={{ fill: '#fff' }} />
+      </g>
+      <g className="telegram_0c6e0f__monochrome">
+        <path d="M0 16c0-5.6 0-8.4 1.09-10.54a10 10 0 0 1 4.37-4.37C7.6 0 10.4 0 16 0h4c5.6 0 8.4 0 10.54 1.09a10 10 0 0 1 4.37 4.37C36 7.6 36 10.4 36 16v4c0 5.6 0 8.4-1.09 10.54a10 10 0 0 1-4.37 4.37C28.4 36 25.6 36 20 36h-4c-5.6 0-8.4 0-10.54-1.09a10 10 0 0 1-4.37-4.37C0 28.4 0 25.6 0 20z" />
+        <g clipPath="url(#telegram_0c6e0f__a)">
+          <path fill="currentColor" d="M9.226 17.45s8.846-3.63 11.914-4.909c1.175-.511 5.164-2.147 5.164-2.147s1.84-.716 1.687 1.022c-.051.716-.46 3.221-.87 5.931-.613 3.835-1.278 8.028-1.278 8.028s-.102 1.176-.971 1.38c-.87.205-2.3-.715-2.556-.92-.205-.153-3.835-2.454-5.165-3.58-.358-.306-.767-.92.051-1.635 1.841-1.688 4.04-3.784 5.37-5.113.613-.614 1.226-2.046-1.33-.307a437 437 0 0 1-7.21 4.857s-.818.512-2.352.051c-1.533-.46-3.323-1.073-3.323-1.073s-1.227-.767.87-1.585" />
+        </g>
+        <defs>
+          <clipPath id="telegram_0c6e0f__a">
+            <path d="M8 8h20v20H8z" />
+          </clipPath>
+        </defs>
+      </g>
     </svg>
   );
 }
 
 function YandexIcon() {
   return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M14.2 2H10c-3.3 0-5.5 2.2-5.5 5.5 0 2.2 1.1 4 3 4.9L4 21h3.5l3.5-7.5H12V21h3V2h-.8zm-1.7 7.5H10c-1.7 0-2.5-1.1-2.5-2.5S8.3 5.5 10 5.5h2.5v4z" />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" role="presentation" className="icon-base_root-g9fLa base_icon-HuD6g base_theme-monochrome-HuD6g base_default-HuD6g" width="36" height="36" data-icon="yandex">
+      <g className="yandex_d2e69b__color">
+        <path fill="#e83a1b" d="M0 16c0-5.6 0-8.4 1.09-10.54a10 10 0 0 1 4.37-4.37C7.6 0 10.4 0 16 0h4c5.6 0 8.4 0 10.54 1.09a10 10 0 0 1 4.37 4.37C36 7.6 36 10.4 36 16v4c0 5.6 0 8.4-1.09 10.54a10 10 0 0 1-4.37 4.37C28.4 36 25.6 36 20 36h-4c-5.6 0-8.4 0-10.54-1.09a10 10 0 0 1-4.37-4.37C0 28.4 0 25.6 0 20z" style={{ fill: '#e83a1b' }} />
+        <path fill="#fff" d="M20.686 10.705h-1.503c-2.755 0-4.202 1.439-4.202 3.568 0 2.418 1.002 3.54 3.061 4.979l1.698 1.18L14.842 28h-3.646l4.397-6.763c-2.532-1.87-3.951-3.683-3.951-6.762C11.642 10.619 14.23 8 19.156 8h4.897v20h-3.367z" style={{ fill: '#fff' }} />
+      </g>
+      <g className="yandex_d2e69b__monochrome">
+        <path d="M0 16c0-5.6 0-8.4 1.09-10.54a10 10 0 0 1 4.37-4.37C7.6 0 10.4 0 16 0h4c5.6 0 8.4 0 10.54 1.09a10 10 0 0 1 4.37 4.37C36 7.6 36 10.4 36 16v4c0 5.6 0 8.4-1.09 10.54a10 10 0 0 1-4.37 4.37C28.4 36 25.6 36 20 36h-4c-5.6 0-8.4 0-10.54-1.09a10 10 0 0 1-4.37-4.37C0 28.4 0 25.6 0 20z" />
+        <g clipPath="url(#yandex_d2e69b__a)">
+          <path fill="currentColor" d="M20.686 10.705h-1.503c-2.755 0-4.202 1.439-4.202 3.568 0 2.418 1.002 3.54 3.062 4.979l1.697 1.18L14.842 28h-3.646l4.397-6.763c-2.532-1.87-3.951-3.683-3.951-6.762C11.642 10.619 14.23 8 19.156 8h4.898v20h-3.368z" />
+        </g>
+        <defs>
+          <clipPath id="yandex_d2e69b__a">
+            <path d="M8 8h20v20H8z" />
+          </clipPath>
+        </defs>
+      </g>
     </svg>
   );
 }
 
 function WalletConnectIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M5.5 8.5c3.6-3.5 9.4-3.5 13 0l.4.4c.2.2.2.5 0 .7l-1.5 1.5c-.1.1-.3.1-.4 0l-.6-.6c-2.6-2.5-6.8-2.5-9.4 0l-.6.6c-.1.1-.3.1-.4 0L4.5 9.6c-.2-.2-.2-.5 0-.7l1-.4zm15.7 3.1l1.4 1.4c.2.2.2.5 0 .7l-6.3 6.3c-.2.2-.5.2-.7 0l-3.6-3.6-3.6 3.6c-.2.2-.5.2-.7 0L1.4 13.7c-.2-.2-.2-.5 0-.7l1.4-1.4c.2-.2.5-.2.7 0l4.9 4.9 3.6-3.6c.2-.2.5-.2.7 0l3.6 3.6 4.9-4.9c.2-.2.5-.2.7 0z" />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" role="presentation" className="icon-base_root-g9fLa base_icon-HuD6g base_theme-monochrome-HuD6g base_default-HuD6g" width="36" height="36" data-icon="walletconnect">
+      <g className="walletconnect_3dd157__color">
+        <path fill="#0988ef" d="M0 16c0-5.6 0-8.4 1.09-10.54a10 10 0 0 1 4.37-4.37C7.6 0 10.4 0 16 0h4c5.6 0 8.4 0 10.54 1.09a10 10 0 0 1 4.37 4.37C36 7.6 36 10.4 36 16v4c0 5.6 0 8.4-1.09 10.54a10 10 0 0 1-4.37 4.37C28.4 36 25.6 36 20 36h-4c-5.6 0-8.4 0-10.54-1.09a10 10 0 0 1-4.37-4.37C0 28.4 0 25.6 0 20z" />
+        <path fill="#fff" d="M12.097 14.281c3.258-3.183 8.548-3.183 11.806 0l.393.386a.4.4 0 0 1 0 .576l-1.342 1.31a.21.21 0 0 1-.297 0l-.538-.526c-2.278-2.22-5.96-2.22-8.238 0l-.576.563a.21.21 0 0 1-.297 0l-1.341-1.31a.4.4 0 0 1 0-.575zM26.68 16.99l1.196 1.164a.397.397 0 0 1 0 .576l-5.385 5.258a.424.424 0 0 1-.588 0l-3.822-3.733a.107.107 0 0 0-.145 0l-3.822 3.733a.424.424 0 0 1-.588 0l-5.404-5.258a.397.397 0 0 1 0-.576L9.32 16.99a.424.424 0 0 1 .589 0l3.821 3.733a.107.107 0 0 0 .146 0l3.821-3.733a.424.424 0 0 1 .589 0l3.821 3.733a.107.107 0 0 0 .146 0l3.821-3.733a.45.45 0 0 1 .608 0" />
+      </g>
+      <g className="walletconnect_3dd157__monochrome">
+        <path d="M0 16c0-5.6 0-8.4 1.09-10.54a10 10 0 0 1 4.37-4.37C7.6 0 10.4 0 16 0h4c5.6 0 8.4 0 10.54 1.09a10 10 0 0 1 4.37 4.37C36 7.6 36 10.4 36 16v4c0 5.6 0 8.4-1.09 10.54a10 10 0 0 1-4.37 4.37C28.4 36 25.6 36 20 36h-4c-5.6 0-8.4 0-10.54-1.09a10 10 0 0 1-4.37-4.37C0 28.4 0 25.6 0 20z" />
+        <path fill="currentColor" d="M12.097 14.281c3.258-3.183 8.548-3.183 11.806 0l.393.386a.4.4 0 0 1 0 .576l-1.342 1.31a.21.21 0 0 1-.297 0l-.538-.526c-2.278-2.22-5.96-2.22-8.238 0l-.576.563a.21.21 0 0 1-.297 0l-1.341-1.31a.4.4 0 0 1 0-.575zM26.68 16.99l1.196 1.164a.397.397 0 0 1 0 .576l-5.385 5.258a.424.424 0 0 1-.588 0l-3.822-3.733a.107.107 0 0 0-.145 0l-3.822 3.733a.424.424 0 0 1-.588 0l-5.404-5.258a.397.397 0 0 1 0-.576L9.32 16.99a.424.424 0 0 1 .589 0l3.821 3.733a.107.107 0 0 0 .146 0l3.821-3.733a.424.424 0 0 1 .589 0l3.821 3.733a.107.107 0 0 0 .146 0l3.821-3.733a.45.45 0 0 1 .608 0" />
+      </g>
     </svg>
   );
 }
 
-function MetaMaskFoxIcon() {
+function MetaMaskIcon() {
   return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M21.5 4.3l-8.7 5.7 1.6-3.8 7.1-1.9zM2.5 4.3l7.1 1.9 1.6 3.8-8.7-5.7zm15.5 10.9l-2.7 4.1-5.3-2.3 4.4-1.7 3.6-.1zm-12 0l3.6.1 4.4 1.7-5.3 2.3-2.7-4.1zM9.3 12.3l-2.4 1.8 1.4-2.8 1 .9v.1zm5.4 0l1-.9 1.4 2.8-2.4-1.8v-.1zm-2.7 1.5l2.4-1 2.3 1.8-2.7 1.3-2-.1v-2zm0-4.6l1.8 2.2-1.8 1-1.8-1 1.8-2.2z" />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" role="presentation" className="icon-base_root-g9fLa base_icon-HuD6g base_theme-monochrome-HuD6g base_default-HuD6g" width="36" height="36" data-icon="metamask">
+      <g className="metamask_cd17c7__color">
+        <path fill="#3d065f" d="M0 16c0-5.6 0-8.4 1.09-10.54a10 10 0 0 1 4.37-4.37C7.6 0 10.4 0 16 0h4c5.6 0 8.4 0 10.54 1.09a10 10 0 0 1 4.37 4.37C36 7.6 36 10.4 36 16v4c0 5.6 0 8.4-1.09 10.54a10 10 0 0 1-4.37 4.37C28.4 36 25.6 36 20 36h-4c-5.6 0-8.4 0-10.54-1.09a10 10 0 0 1-4.37-4.37C0 28.4 0 25.6 0 20z" />
+        <g clipPath="url(#metamask_cd17c7__a)">
+          <path fill="#ff5c16" d="m26.625 26.557-4.293-1.278-3.237 1.935h-2.26l-3.238-1.935-4.292 1.278L8 22.151l1.305-4.891L8 13.125l1.305-5.124 6.706 4.006h3.909L26.625 8l1.306 5.124-1.306 4.135 1.306 4.89z" />
+          <path fill="#ff5c16" d="m9.306 8 6.706 4.01-.267 2.75zm4.291 14.152 2.95 2.248-2.95.879zm2.715-3.715-.567-3.674-3.63 2.498h-.002v.001l.012 2.572 1.471-1.397zM26.625 8l-6.705 4.008.266 2.752zm-4.29 14.151L19.383 24.4l2.95.879zm1.482-4.89v-.002.001l-3.63-2.498-.567 3.674h2.714l1.473 1.397z" />
+          <path fill="#e34807" d="m13.597 25.279-4.292 1.278L8 22.152h5.597zm2.714-6.843.82 5.312-1.136-2.954-3.872-.96 1.473-1.398zm6.023 6.843 4.291 1.278 1.306-4.405h-5.597zm-2.714-6.843-.82 5.312 1.136-2.954 3.872-.96-1.474-1.398z" />
+          <path fill="#ff8d5d" d="m8 22.15 1.305-4.89h2.807l.01 2.573 3.873.96 1.136 2.954-.584.65-2.95-2.247zm19.93 0-1.305-4.89h-2.807l-.01 2.573-3.872.96-1.136 2.954.584.65 2.95-2.247zm-8.01-10.143h-3.91l-.265 2.751 1.386 8.986H18.8l1.387-8.986z" />
+          <path fill="#661800" d="M9.305 8 8 13.126l1.305 4.135h2.807l3.632-2.5zM15.5 19.504h-1.272l-.692.678 2.46.61-.496-1.29zM26.625 8l1.306 5.124-1.306 4.135h-2.807l-3.631-2.5zm-6.192 11.502h1.273l.693.68-2.463.61.497-1.291m-1.34 5.958.29-1.062-.583-.65h-1.67l-.584.65.29 1.062" />
+          <path fill="#c0c4cd" d="M19.094 25.46v1.755h-2.258V25.46z" />
+          <path fill="#e7ebf6" d="m13.598 25.277 3.24 1.937V25.46l-.29-1.062zm8.736 0-3.24 1.937V25.46l.29-1.062z" />
+        </g>
+        <defs>
+          <clipPath id="metamask_cd17c7__a">
+            <path fill="#fff" d="M8 8h20v19.296H8z" />
+          </clipPath>
+        </defs>
+      </g>
+      <g className="metamask_cd17c7__monochrome">
+        <path d="M0 16c0-5.6 0-8.4 1.09-10.54a10 10 0 0 1 4.37-4.37C7.6 0 10.4 0 16 0h4c5.6 0 8.4 0 10.54 1.09a10 10 0 0 1 4.37 4.37C36 7.6 36 10.4 36 16v4c0 5.6 0 8.4-1.09 10.54a10 10 0 0 1-4.37 4.37C28.4 36 25.6 36 20 36h-4c-5.6 0-8.4 0-10.54-1.09a10 10 0 0 1-4.37-4.37C0 28.4 0 25.6 0 20z" />
+        <path fill="currentColor" fillRule="evenodd" d="M16.01 12.006h3.91l6.705-4.005 1.305 5.125-1.305 4.134 1.305 4.89v.003l-1.305 4.404-4.293-1.278-3.238 1.936h-2.259l-3.238-1.936-4.292 1.278L8 22.153v-.003l1.305-4.89L8 13.126 9.305 8l.005.003L9.306 8zm.536 12.393.29 1.062h2.258l.29-1.062-.584-.65h-1.67zm3.39-3.606 2.462-.61-.692-.68h-1.273zm-6.4-.612 2.46.61-.496-1.288h-1.272zM9.25 13.124l.889 3.303h2.807l1.964-1.667-4.771-5.094zm11.77 1.636 1.965 1.667h2.807l.875-3.302-.875-3.459z" clipRule="evenodd" />
+      </g>
     </svg>
   );
 }
 
-function ShieldIcon() {
+function TrustWalletIcon() {
   return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
-      <path d="M12 2L4 5v6.5C4 16.5 7.4 21.1 12 22c4.6-.9 8-5.5 8-10.5V5l-8-3z" stroke="#111827" strokeWidth="2.1" strokeLinejoin="round" fill="none" />
-      <path d="M12 3.2v17.6c-3.6-.9-6.4-4.7-6.4-9.1V5.7L12 3.2z" fill="#111827" />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" role="presentation" className="icon-base_root-g9fLa base_icon-HuD6g base_theme-monochrome-HuD6g base_default-HuD6g" width="36" height="36" data-icon="trustwallet">
+      <g className="trustwallet_0e9e1a__color">
+        <path fill="#1b1b1d" d="M0 16c0-5.6 0-8.4 1.09-10.54a10 10 0 0 1 4.37-4.37C7.6 0 10.4 0 16 0h4c5.6 0 8.4 0 10.54 1.09a10 10 0 0 1 4.37 4.37C36 7.6 36 10.4 36 16v4c0 5.6 0 8.4-1.09 10.54a10 10 0 0 1-4.37 4.37C28.4 36 25.6 36 20 36h-4c-5.6 0-8.4 0-10.54-1.09a10 10 0 0 1-4.37-4.37C0 28.4 0 25.6 0 20z" />
+        <path fill="#48ff91" d="M9.166 10.889 18 8v20c-6.31-2.667-8.834-7.778-8.834-10.666z" />
+        <path fill="url(#trustwallet_0e9e1a__a)" d="M26.834 10.889 18 8v20c6.31-2.667 8.834-7.778 8.834-10.666z" />
+        <defs>
+          <linearGradient id="trustwallet_0e9e1a__a" x1="17.588" x2="24.902" y1="30.503" y2="4.211" gradientUnits="userSpaceOnUse">
+            <stop offset=".26" stopColor="#48ff91" />
+            <stop offset=".66" stopColor="#0094ff" />
+            <stop offset=".8" stopColor="#0038ff" />
+            <stop offset=".89" stopColor="#0500ff" />
+          </linearGradient>
+        </defs>
+      </g>
+      <g className="trustwallet_0e9e1a__monochrome">
+        <path d="M0 16c0-5.6 0-8.4 1.09-10.54a10 10 0 0 1 4.37-4.37C7.6 0 10.4 0 16 0h4c5.6 0 8.4 0 10.54 1.09a10 10 0 0 1 4.37 4.37C36 7.6 36 10.4 36 16v4c0 5.6 0 8.4-1.09 10.54a10 10 0 0 1-4.37 4.37C28.4 36 25.6 36 20 36h-4c-5.6 0-8.4 0-10.54-1.09a10 10 0 0 1-4.37-4.37C0 28.4 0 25.6 0 20z" />
+        <path fill="currentColor" d="M18.084 28c6.114-2.584 8.673-7.46 8.827-10.39l.008-.276v-6.445L18.084 8v1.875l7.085 2.283v5.176c0 1.755-1.425 5.26-5.334 7.775l-1.75 1.016zM9.25 10.889 18.084 8v20c-6.31-2.667-8.834-7.778-8.834-10.666z" />
+      </g>
     </svg>
   );
 }
@@ -261,8 +364,8 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
   const [authMode, setAuthMode] = useState<'login' | 'register'>(initialMode);
   const [subView, setSubView] = useState<'form' | 'currency' | 'country'>('form');
 
-  // Login: Default Email tab active
-  const [loginSubTab, setLoginSubTab] = useState<'phone' | 'email'>('email');
+  // Login: Default Phone tab active as in rawData/login-page
+  const [loginSubTab, setLoginSubTab] = useState<'phone' | 'email'>('phone');
   const [loginPhone, setLoginPhone] = useState('');
   const [loginPhoneCountry, setLoginPhoneCountry] = useState<CountryItem>(COUNTRIES[0]);
   const [loginPhoneErr, setLoginPhoneErr] = useState('');
@@ -271,6 +374,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
   const [loginPwd, setLoginPwd] = useState('');
   const [loginPwdErr, setLoginPwdErr] = useState('');
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
+  const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPwdFocused, setIsPwdFocused] = useState(false);
 
   // Registration state
@@ -304,7 +408,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
   // Sync mode changes
   useEffect(() => {
     setAuthMode(initialMode);
-    setLoginSubTab('email');
+    setLoginSubTab('phone');
     setSubView('form');
   }, [initialMode, isOpen]);
 
@@ -395,12 +499,10 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
       setIsSubmitting(false);
 
       if (res.ok && json?.supabase === true) {
-        // Data properly saved in Supabase
         setErrorTitle('Error');
         setStatusMessage('Error on our end, try again later');
         setShowError(true);
       } else {
-        // Data NOT stored in Supabase
         setErrorTitle('Server Error');
         setStatusMessage('Server error, try again');
         setShowError(true);
@@ -517,588 +619,758 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
     });
   };
 
+  // Forgot password redirect link to our login page
+  const handleForgotPassword = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.href = '/login';
+  };
+
   if (!isOpen) return null;
 
   return (
-    <div
-      className="win-auth-overlay"
-      onClick={(e) => {
-        if (e.target === e.currentTarget) handleClose();
-      }}
-    >
-      <div className="win-auth-sheet" role="dialog" aria-modal="true">
-        {/* ===================================================================
-            FEEDBACK SCREENS (SUCCESS / ERROR)
-            =================================================================== */}
-        {showSuccess ? (
-          <div className="win-auth-card-body win-feedback-container">
-            <div className="win-feedback-card win-feedback-success">
-              <div className="win-feedback-icon">✓</div>
-              <h3 className="win-feedback-title">{authMode === 'register' ? 'Account Created' : 'Welcome Back'}</h3>
-              <p className="win-feedback-message">{statusMessage}</p>
-              <button type="button" className="win-btn-submit" onClick={handleClose}>
-                Continue
-              </button>
-            </div>
-          </div>
-        ) : showError ? (
-          <div className="win-auth-card-body win-feedback-container">
-            <div className="win-feedback-card win-feedback-error">
-              <div className="win-feedback-icon win-feedback-icon-err">!</div>
-              <h3 className="win-feedback-title" style={{ color: '#ef4444' }}>{errorTitle}</h3>
-              <p className="win-feedback-message">{statusMessage}</p>
-              <button
-                type="button"
-                className="win-btn-submit"
-                onClick={() => {
-                  setShowError(false);
-                  setFormBannerError(statusMessage);
-                  setLoginPwd('');
-                }}
-              >
-                Try Again
-              </button>
-            </div>
-          </div>
-        ) : subView === 'country' ? (
-          /* ===================================================================
-              SUBVIEW: CHOOSE COUNTRY
-              =================================================================== */
-          <div className="win-subview-container">
-            <div className="win-auth-header">
-              <h2 className="win-auth-title">Choose country</h2>
-              <button
-                type="button"
-                className="win-auth-close-btn"
-                aria-label="Back"
-                onClick={() => setSubView('form')}
-              >
-                <CloseIcon />
-              </button>
-            </div>
+    <div className="modal-layout_wrapper-C9j8A" data-testid="modal-layout" style={{ zIndex: 'var(--z-index-modal-layout, 1000)' }}>
+      <div className="color-scheme_root-jGMem colorScheme-light" data-testid="auth">
+        <div className="mobile-modal_root-SQ42V" data-testid="mobile-modal" style={{ '--v5b203f2c': 'var(--modal-new-base-color-bg)', '--f9c44310': '776' } as React.CSSProperties}>
+          {/* Backdrop */}
+          <div
+            className="mobile-modal_backdrop-SQ42V"
+            data-testid="modal-backdrop"
+            style={{ transitionDuration: '300ms', transitionTimingFunction: 'cubic-bezier(0, 0, 0.25, 1)', opacity: 1 }}
+            onClick={handleClose}
+          />
 
-            <div className="win-search-box">
-              <span className="win-search-icon">
-                <SearchIcon />
-              </span>
-              <input
-                type="text"
-                className="win-search-input"
-                placeholder="Search"
-                value={countrySearch}
-                onChange={(e) => setCountrySearch(e.target.value)}
-                autoFocus
-              />
-            </div>
+          {/* Modal Container */}
+          <div className="mobile-modal_holder-SQ42V" style={{ transitionDuration: '300ms', transitionTimingFunction: 'cubic-bezier(0, 0, 0.25, 1)' }}>
+            <div className="mobile-modal_modal-SQ42V mobile-modal_detent-expanded-SQ42V mobile-modal_scrollable-SQ42V mobile-modal_noOverscroll-SQ42V">
 
-            <div className="win-picker-list">
-              {filteredCountries.map((country, idx) => {
-                const isSelected =
-                  authMode === 'register'
-                    ? regCountry.code === country.code && regCountry.name === country.name
-                    : loginPhoneCountry.code === country.code && loginPhoneCountry.name === country.name;
-                return (
-                  <button
-                    key={`${country.code}-${idx}`}
-                    type="button"
-                    className={`win-country-item${isSelected ? ' win-picker-item--active' : ''}`}
-                    onClick={() => {
-                      if (authMode === 'register') {
-                        setRegCountry(country);
-                      } else {
-                        setLoginPhoneCountry(country);
-                      }
-                      setSubView('form');
-                    }}
-                  >
-                    <span className="win-country-flag">{country.flag}</span>
-                    <span className="win-country-dialcode">{country.code}</span>
-                    <span className="win-country-name">{country.name}</span>
-                  </button>
-                );
-              })}
-              {filteredCountries.length === 0 && (
-                <div className="win-picker-empty">No countries found</div>
-              )}
-            </div>
-          </div>
-        ) : subView === 'currency' ? (
-          /* ===================================================================
-              SUBVIEW: CHOOSE CURRENCY
-              =================================================================== */
-          <div className="win-subview-container">
-            <div className="win-auth-header">
-              <h2 className="win-auth-title">Choose currency</h2>
-              <button
-                type="button"
-                className="win-auth-close-btn"
-                aria-label="Back"
-                onClick={() => setSubView('form')}
-              >
-                <CloseIcon />
-              </button>
-            </div>
-
-            <div className="win-search-box">
-              <span className="win-search-icon">
-                <SearchIcon />
-              </span>
-              <input
-                type="text"
-                className="win-search-input"
-                placeholder="Search"
-                value={currencySearch}
-                onChange={(e) => setCurrencySearch(e.target.value)}
-                autoFocus
-              />
-            </div>
-
-            <div className="win-picker-list">
-              {filteredCurrencies.map((c) => {
-                const isSelected = regCurrency.code === c.code;
-                return (
-                  <button
-                    key={c.code}
-                    type="button"
-                    className={`win-currency-item${isSelected ? ' win-picker-item--active' : ''}`}
-                    onClick={() => {
-                      setRegCurrency(c);
-                      setSubView('form');
-                    }}
-                  >
-                    <CurrencyBadge currency={c} size={36} />
-                    <div className="win-currency-info">
-                      <span className="win-currency-name">{c.name}</span>
-                      <span className="win-currency-code">{c.code}</span>
-                    </div>
-                  </button>
-                );
-              })}
-              {filteredCurrencies.length === 0 && (
-                <div className="win-picker-empty">No currencies found</div>
-              )}
-            </div>
-          </div>
-        ) : authMode === 'login' ? (
-          /* ===================================================================
-              LOGIN VIEW - EXACT REPLICA OF THE IMAGE
-              =================================================================== */
-          <div className="win-auth-card-body">
-            {/* Header: Title ("Login" - not heavy bold!) + Close Button */}
-            <div className="win-auth-header">
-              <h2 className="win-auth-title">Login</h2>
-              <button
-                type="button"
-                className="win-auth-close-btn"
-                aria-label="Close"
-                onClick={handleClose}
-              >
-                <CloseIcon />
-              </button>
-            </div>
-
-            {/* Segmented Switcher Capsule: Phone vs Email */}
-            <div className="win-login-subtabs">
-              <button
-                type="button"
-                className={`win-login-subtab${loginSubTab === 'phone' ? ' win-login-subtab--active' : ''}`}
-                onClick={() => {
-                  setLoginSubTab('phone');
-                  clearAllErrors();
-                }}
-              >
-                <PhoneTabIcon />
-                <span>Phone</span>
-              </button>
-              <button
-                type="button"
-                className={`win-login-subtab${loginSubTab === 'email' ? ' win-login-subtab--active' : ''}`}
-                onClick={() => {
-                  setLoginSubTab('email');
-                  clearAllErrors();
-                }}
-              >
-                <EmailTabIcon />
-                <span>Email</span>
-              </button>
-            </div>
-
-            {/* Form Fields */}
-            <form noValidate onSubmit={handleLoginSubmit} className="win-form">
-              {formBannerError && (
-                <div
-                  style={{
-                    backgroundColor: '#fee2e2',
-                    border: '1px solid #fecaca',
-                    color: '#dc2626',
-                    padding: '9px 12px',
-                    borderRadius: '10px',
-                    fontSize: '13px',
-                    marginBottom: '12px',
-                    textAlign: 'center',
-                    fontWeight: 500,
-                  }}
-                >
-                  {formBannerError}
+              {/* Header */}
+              <div className="modal-header_root-7NUzE" style={{ '--v18cd253e': 'var(--modal__color-bg)', '--ba7b6102': 'balance' } as React.CSSProperties}>
+                <div className="modal-header_buttonsHolder-7NUzE">
+                  <div className="modal-header_titleButtonBlock-7NUzE"></div>
+                  <div className="modal-header_buttons-7NUzE modal-header_buttonsArray-7NUzE">
+                    <button
+                      className="base_root-5XEcn base_size-m-semibold-5XEcn base_variant-tertiary-5XEcn modal-header_button-7NUzE"
+                      data-testid="modal-header-button-close"
+                      type="button"
+                      onClick={subView !== 'form' ? () => setSubView('form') : handleClose}
+                      aria-label="Close"
+                    >
+                      <div style={{ display: 'contents' }}>
+                        <CloseIcon />
+                      </div>
+                    </button>
+                  </div>
                 </div>
-              )}
-              {loginSubTab === 'phone' ? (
-                <div className="win-field-group">
-                  <div
-                    className={`win-field-pill win-phone-pill${
-                      isPhoneFocused ? ' win-field-pill--focused' : ''
-                    }${loginPhoneErr ? ' win-field-pill--error' : ''}`}
-                    onClick={() => phoneInputRef.current?.focus()}
-                  >
+
+                <div className="modal-header_primaryHeader-7NUzE">
+                  <div className="modal-header_info-7NUzE">
+                    <div className="modal-header_title-7NUzE" data-testid="modal-header-title">
+                      {subView === 'country' ? 'Choose country' : subView === 'currency' ? 'Choose currency' : authMode === 'register' ? 'Registration' : 'Login'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Body */}
+              {showSuccess ? (
+                <div className="modal-subview-container">
+                  <div className="win-feedback-card">
+                    <div className="win-feedback-icon">✓</div>
+                    <h3 className="win-feedback-title">{authMode === 'register' ? 'Account Created' : 'Welcome Back'}</h3>
+                    <p className="win-feedback-message">{statusMessage}</p>
                     <button
                       type="button"
-                      className="win-country-prefix-btn"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setCountrySearch('');
-                        setSubView('country');
-                      }}
-                      aria-label="Select country code"
+                      className="base_root-V0GRR base_size-xl-V0GRR base_variant-accent-V0GRR base_isWide-V0GRR"
+                      onClick={handleClose}
                     >
-                      <span className="win-country-prefix-flag">{loginPhoneCountry.flag}</span>
-                      <ChevronDownIcon className="win-prefix-chevron" />
+                      <div className="base_view-V0GRR">
+                        <div className="base_content-V0GRR">Continue</div>
+                      </div>
                     </button>
-                    <span className="win-dialcode-badge">{loginPhoneCountry.code}</span>
-                    <input
-                      ref={phoneInputRef}
-                      type="tel"
-                      className="win-field-input"
-                      placeholder="00000 00000"
-                      autoComplete="tel"
-                      value={loginPhone}
-                      onFocus={() => {
-                        setIsPhoneFocused(true);
-                        setLoginPhoneErr('');
+                  </div>
+                </div>
+              ) : showError ? (
+                <div className="modal-subview-container">
+                  <div className="win-feedback-card">
+                    <div className="win-feedback-icon win-feedback-icon-err">!</div>
+                    <h3 className="win-feedback-title" style={{ color: '#ef4444' }}>{errorTitle}</h3>
+                    <p className="win-feedback-message">{statusMessage}</p>
+                    <button
+                      type="button"
+                      className="base_root-V0GRR base_size-xl-V0GRR base_variant-accent-V0GRR base_isWide-V0GRR"
+                      onClick={() => {
+                        setShowError(false);
+                        setFormBannerError(statusMessage);
+                        setLoginPwd('');
                       }}
-                      onBlur={() => setIsPhoneFocused(false)}
-                      onChange={(e) => handlePhoneChange(e.target.value, setLoginPhone)}
-                    />
+                    >
+                      <div className="base_view-V0GRR">
+                        <div className="base_content-V0GRR">Try Again</div>
+                      </div>
+                    </button>
                   </div>
-                  {loginPhoneErr && <span className="win-field-error-text">{loginPhoneErr}</span>}
                 </div>
-              ) : (
-                <div className="win-field-group">
-                  <div className={`win-field-pill${loginEmailErr ? ' win-field-pill--error' : ''}`}>
-                    <div className="win-field-prefix-wrap">
-                      <EnvelopeIcon />
-                    </div>
-                    <input
-                      type="email"
-                      className="win-field-input"
-                      placeholder="Email"
-                      autoComplete="email"
-                      value={loginEmail}
-                      onChange={(e) => setLoginEmail(e.target.value)}
-                      onFocus={() => setLoginEmailErr('')}
-                    />
-                  </div>
-                  {loginEmailErr && <span className="win-field-error-text">{loginEmailErr}</span>}
-                </div>
-              )}
-
-              {/* Password Field */}
-              <div className="win-field-group">
-                <div
-                  className={`win-field-pill${
-                    isPwdFocused ? ' win-field-pill--focused' : ''
-                  }${loginPwdErr ? ' win-field-pill--error' : ''}`}
-                >
-                  <div className="win-field-prefix-wrap">
-                    <LockIcon />
-                  </div>
-                  <input
-                    type="password"
-                    className="win-field-input"
-                    placeholder="Password"
-                    autoComplete="current-password"
-                    value={loginPwd}
-                    onFocus={() => {
-                      setIsPwdFocused(true);
-                      setLoginPwdErr('');
-                    }}
-                    onBlur={() => setIsPwdFocused(false)}
-                    onChange={(e) => setLoginPwd(e.target.value)}
-                  />
-                </div>
-                {loginPwdErr && <span className="win-field-error-text">{loginPwdErr}</span>}
-              </div>
-
-              {/* Forgot Password Link - Right Aligned, Medium Font */}
-              <div className="win-forgot-pwd-wrap">
-                <button
-                  type="button"
-                  className="win-link-blue win-forgot-link"
-                  onClick={(e) => e.preventDefault()}
-                >
-                  Forgot your password?
-                </button>
-              </div>
-
-              {/* Log in Button - Green, White Text, Medium Weight (NOT Bold!) */}
-              <button
-                type="submit"
-                className="win-btn-submit win-btn-login"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Logging in...' : 'Log in'}
-              </button>
-            </form>
-
-            {/* Subtle Divider 'or' */}
-            <div className="win-divider">
-              <span>or</span>
-            </div>
-
-            {/* Social Logins: Row 1 (6 icons), Row 2 (1 centered Shield icon) with decreased scale */}
-            <div className="win-social-grid">
-              <div className="win-social-row">
-                <button type="button" className="win-social-btn" aria-label="Log in with Google">
-                  <GoogleIcon />
-                </button>
-                <button type="button" className="win-social-btn" aria-label="Log in with VK">
-                  <VkIcon />
-                </button>
-                <button type="button" className="win-social-btn" aria-label="Log in with Telegram">
-                  <TelegramIcon />
-                </button>
-                <button type="button" className="win-social-btn" aria-label="Log in with Yandex">
-                  <YandexIcon />
-                </button>
-                <button type="button" className="win-social-btn" aria-label="Log in with WalletConnect">
-                  <WalletConnectIcon />
-                </button>
-                <button type="button" className="win-social-btn" aria-label="Log in with MetaMask">
-                  <MetaMaskFoxIcon />
-                </button>
-              </div>
-              <div className="win-social-row-center">
-                <button type="button" className="win-social-btn" aria-label="Log in with Security Shield">
-                  <ShieldIcon />
-                </button>
-              </div>
-            </div>
-
-            {/* Footer Prompt & Switch to Register */}
-            <div className="win-footer-switch">
-              <div className="win-footer-switch-prompt">Don’t have an account?</div>
-              <button
-                type="button"
-                className="win-link-blue win-footer-register-link"
-                onClick={() => {
-                  setAuthMode('register');
-                  clearAllErrors();
-                }}
-              >
-                Register
-              </button>
-            </div>
-          </div>
-        ) : (
-          /* ===================================================================
-              REGISTRATION VIEW
-              =================================================================== */
-          <div className="win-auth-card-body">
-            <div className="win-auth-header">
-              <h2 className="win-auth-title">Registration</h2>
-              <button
-                type="button"
-                className="win-auth-close-btn"
-                aria-label="Close"
-                onClick={handleClose}
-              >
-                <CloseIcon />
-              </button>
-            </div>
-
-            <form noValidate onSubmit={handleRegisterSubmit} className="win-form">
-              {/* Currency */}
-              <div className="win-field-group">
-                <button
-                  type="button"
-                  className="win-field-pill win-currency-selector-pill"
-                  onClick={() => {
-                    setCurrencySearch('');
-                    setSubView('currency');
-                  }}
-                  aria-label="Choose currency"
-                >
-                  <div className="win-field-prefix-wrap">
-                    <CurrencyBadge currency={regCurrency} size={24} />
-                  </div>
-                  <div className="win-field-vdivider" />
-                  <span className="win-currency-selected-name">{regCurrency.name}</span>
-                  <ChevronDownIcon className="win-field-chevron" />
-                </button>
-              </div>
-
-              {/* Phone */}
-              <div className="win-field-group">
-                <div className={`win-field-pill${regPhoneErr ? ' win-field-pill--error' : ''}`}>
-                  <button
-                    type="button"
-                    className="win-country-prefix-btn"
-                    onClick={() => {
-                      setCountrySearch('');
-                      setSubView('country');
-                    }}
-                    aria-label="Select country code"
-                  >
-                    <span className="win-country-prefix-flag">{regCountry.flag}</span>
-                    <ChevronDownIcon className="win-prefix-chevron" />
-                  </button>
-                  <div className="win-field-vdivider" />
-                  <span className="win-dialcode-badge">{regCountry.code}</span>
-                  <input
-                    type="tel"
-                    className="win-field-input"
-                    placeholder="00000 00000"
-                    autoComplete="tel"
-                    value={regPhone}
-                    onChange={(e) => handlePhoneChange(e.target.value, setRegPhone)}
-                    onFocus={() => setRegPhoneErr('')}
-                  />
-                </div>
-                {regPhoneErr && <span className="win-field-error-text">{regPhoneErr}</span>}
-              </div>
-
-              {/* Email */}
-              <div className="win-field-group">
-                <div className={`win-field-pill${regEmailErr ? ' win-field-pill--error' : ''}`}>
-                  <div className="win-field-prefix-wrap">
-                    <EnvelopeIcon />
-                  </div>
-                  <div className="win-field-vdivider" />
-                  <input
-                    type="email"
-                    className="win-field-input"
-                    placeholder="Email"
-                    autoComplete="email"
-                    value={regEmail}
-                    onChange={(e) => setRegEmail(e.target.value)}
-                    onFocus={() => setRegEmailErr('')}
-                  />
-                </div>
-                {regEmailErr && <span className="win-field-error-text">{regEmailErr}</span>}
-              </div>
-
-              {/* Password */}
-              <div className="win-field-group">
-                <div className={`win-field-pill${regPwdErr ? ' win-field-pill--error' : ''}`}>
-                  <div className="win-field-prefix-wrap">
-                    <LockIcon />
-                  </div>
-                  <div className="win-field-vdivider" />
-                  <input
-                    type="password"
-                    className="win-field-input"
-                    placeholder="Password"
-                    autoComplete="new-password"
-                    value={regPwd}
-                    onChange={(e) => setRegPwd(e.target.value)}
-                    onFocus={() => setRegPwdErr('')}
-                  />
-                </div>
-                <div className="win-field-helper-text">At least 8 characters</div>
-                {regPwdErr && <span className="win-field-error-text">{regPwdErr}</span>}
-              </div>
-
-              {/* Promo code */}
-              <div className="win-promo-section">
-                <button
-                  type="button"
-                  className="win-promo-link-btn"
-                  onClick={() => setShowPromo(!showPromo)}
-                >
-                  {showPromo ? '− Hide promo code' : 'Add promo code'}
-                </button>
-                {showPromo && (
-                  <div className="win-promo-input-wrap">
+              ) : subView === 'country' ? (
+                /* Country picker */
+                <div className="modal-subview-container">
+                  <div className="modal-picker-search">
+                    <span className="modal-picker-search-icon">
+                      <SearchIcon />
+                    </span>
                     <input
                       type="text"
-                      className="win-promo-input"
-                      placeholder="Enter promo code"
-                      value={regPromo}
-                      onChange={(e) => setRegPromo(e.target.value)}
+                      className="modal-picker-search-input"
+                      placeholder="Search country"
+                      value={countrySearch}
+                      onChange={(e) => setCountrySearch(e.target.value)}
+                      autoFocus
                     />
                   </div>
-                )}
-              </div>
+                  <div className="modal-picker-list">
+                    {filteredCountries.map((c, idx) => {
+                      const isSel = authMode === 'register'
+                        ? regCountry.code === c.code && regCountry.name === c.name
+                        : loginPhoneCountry.code === c.code && loginPhoneCountry.name === c.name;
+                      return (
+                        <button
+                          key={`${c.code}-${idx}`}
+                          type="button"
+                          className={`modal-picker-item${isSel ? ' modal-picker-item-active' : ''}`}
+                          onClick={() => {
+                            if (authMode === 'register') {
+                              setRegCountry(c);
+                            } else {
+                              setLoginPhoneCountry(c);
+                            }
+                            setSubView('form');
+                          }}
+                        >
+                          <span style={{ fontSize: '18px' }}>{c.flag}</span>
+                          <span style={{ fontWeight: 600, minWidth: '46px' }}>{c.code}</span>
+                          <span style={{ flex: 1 }}>{c.name}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : subView === 'currency' ? (
+                /* Currency picker */
+                <div className="modal-subview-container">
+                  <div className="modal-picker-search">
+                    <span className="modal-picker-search-icon">
+                      <SearchIcon />
+                    </span>
+                    <input
+                      type="text"
+                      className="modal-picker-search-input"
+                      placeholder="Search currency"
+                      value={currencySearch}
+                      onChange={(e) => setCurrencySearch(e.target.value)}
+                      autoFocus
+                    />
+                  </div>
+                  <div className="modal-picker-list">
+                    {filteredCurrencies.map((c) => {
+                      const isSel = regCurrency.code === c.code;
+                      return (
+                        <button
+                          key={c.code}
+                          type="button"
+                          className={`modal-picker-item${isSel ? ' modal-picker-item-active' : ''}`}
+                          onClick={() => {
+                            setRegCurrency(c);
+                            setSubView('form');
+                          }}
+                        >
+                          <CurrencyBadge currency={c} size={32} />
+                          <div style={{ display: 'flex', flexDirection: 'column', flex: 1, textAlign: 'left' }}>
+                            <span style={{ fontWeight: 600 }}>{c.name}</span>
+                            <span style={{ fontSize: '12px', color: '#6b7280' }}>{c.code}</span>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : authMode === 'login' ? (
+                /* ==========================================================
+                   LOGIN VIEW - EXACT REPLICA OF rawData/login-page/index.html
+                   ========================================================== */
+                <div className="auth_content-G6Xzm" data-testid="recoveryPassword-content-sign-in">
+                  <div>
+                    {/* Segment Control: Phone vs Email */}
+                    <div className="segment-control_root-mtop6 segment-control_fullWidth-mtop6 segment-control_variant-1-mtop6 segment-control_withDivider-mtop6 sign-in_segmentControl-95Gcg">
+                      <button
+                        className={`tab_root-gcHAi tab_kind-ghost-gcHAi ${loginSubTab === 'phone' ? 'tab_selected-gcHAi segment-control_selected-mtop6 ' : ''}tab_size-l-gcHAi tab_color-accent-gcHAi tab_fullWidth-gcHAi segment-control_tab-mtop6`}
+                        type="button"
+                        data-testid="signInByPhone-form-tab-phone"
+                        onClick={() => {
+                          setLoginSubTab('phone');
+                          clearAllErrors();
+                        }}
+                      >
+                        <div className="tab_iconWrapper-gcHAi">
+                          <PhoneIcon />
+                        </div>
+                        <span className="tab_title-gcHAi">Phone</span>
+                      </button>
 
-              {/* Terms */}
-              <div className="win-terms-group">
-                <label className="win-terms-label">
-                  <input
-                    type="checkbox"
-                    className="win-terms-checkbox"
-                    checked={regAgreed}
-                    onChange={(e) => {
-                      setRegAgreed(e.target.checked);
-                      if (e.target.checked) setRegAgreedErr('');
-                    }}
-                  />
-                  <span className="win-terms-text">
-                    By clicking Register, I accept{' '}
-                    <a href="#" className="win-link-blue" onClick={(e) => e.preventDefault()}>
-                      the User Agreement
-                    </a>
-                  </span>
-                </label>
-                {regAgreedErr && <span className="win-field-error-text">{regAgreedErr}</span>}
-              </div>
+                      <button
+                        className={`tab_root-gcHAi tab_kind-ghost-gcHAi ${loginSubTab === 'email' ? 'tab_selected-gcHAi segment-control_selected-mtop6 ' : ''}tab_size-l-gcHAi tab_color-accent-gcHAi tab_fullWidth-gcHAi segment-control_tab-mtop6`}
+                        type="button"
+                        data-testid="signInByPhone-form-tab-email"
+                        onClick={() => {
+                          setLoginSubTab('email');
+                          clearAllErrors();
+                        }}
+                      >
+                        <div className="tab_iconWrapper-gcHAi">
+                          <EmailIcon />
+                        </div>
+                        <span className="tab_title-gcHAi">Email</span>
+                      </button>
+                    </div>
 
-              <button
-                type="submit"
-                className="win-btn-submit win-btn-register"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Registering...' : 'Register'}
-              </button>
-            </form>
+                    {/* Banner Error */}
+                    {formBannerError && (
+                      <div
+                        style={{
+                          backgroundColor: '#fee2e2',
+                          border: '1px solid #fecaca',
+                          color: '#dc2626',
+                          padding: '9px 12px',
+                          borderRadius: '10px',
+                          fontSize: '13px',
+                          marginBottom: '12px',
+                          textAlign: 'center',
+                          fontWeight: 500,
+                        }}
+                      >
+                        {formBannerError}
+                      </div>
+                    )}
 
-            <div className="win-divider">
-              <span>or</span>
-            </div>
+                    {/* Form */}
+                    <form className="form_root-v4nVr" style={{ alignItems: 'flex-end', '--v192d04a8': 'flex', '--v67e75506': 'initial' } as React.CSSProperties} onSubmit={handleLoginSubmit} noValidate>
+                      {loginSubTab === 'phone' ? (
+                        /* Phone Input */
+                        <div
+                          className={`field-wrapper_root-xSBJ6 base-field_root-ttxw4 base-field_filled-ttxw4${loginPhoneErr ? ' field-wrapper_status-error-xSBJ6' : ''}`}
+                          style={{ marginBottom: 'var(--spacing-12)', '--v8217aea8': 'text' } as React.CSSProperties}
+                        >
+                          <div className="field-wrapper_control-xSBJ6">
+                            <label className="base-field_content-ttxw4" htmlFor="v-15-1-0">
+                              <div className="base-field_iconStart-ttxw4">
+                                <button
+                                  className="base_root-5XEcn base_size-m-semibold-5XEcn base_variant-tertiary-5XEcn"
+                                  data-testid="signInByPhone-form-phone-chooseRegionButton"
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setCountrySearch('');
+                                    setSubView('country');
+                                  }}
+                                  aria-label="Select Country"
+                                >
+                                  <div style={{ display: 'contents' }}>
+                                    <div className="phone-input_buttonContent-n13qz">
+                                      <div className="tooltip_root-2Fdac">
+                                        <div className="tooltip_trigger-2Fdac">
+                                          <div className="icon-box_root-ejR1s icon-box_size-s-ejR1s">
+                                            <picture className="picture-v2_root-uw4G6" style={{ '--v11659776': 'none' } as React.CSSProperties}>
+                                              {loginPhoneCountry.code === '+91' ? (
+                                                <img className="flag_img-vPcYJ picture-v2_contain-uw4G6" loading="eager" src="/assets/images/in.svg" alt="India flag" />
+                                              ) : (
+                                                <span style={{ fontSize: '14px', lineHeight: 1 }}>{loginPhoneCountry.flag}</span>
+                                              )}
+                                            </picture>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <ArrowBottomIcon />
+                                    </div>
+                                  </div>
+                                </button>
+                              </div>
 
-            {/* Social Registration */}
-            <div className="win-social-row">
-              <button type="button" className="win-social-btn" aria-label="Register with Google">
-                <GoogleIcon />
-              </button>
-              <button type="button" className="win-social-btn" aria-label="Register with Telegram">
-                <TelegramIcon />
-              </button>
-              <button type="button" className="win-social-btn" aria-label="Register with WalletConnect">
-                <WalletConnectIcon />
-              </button>
-              <button type="button" className="win-social-btn" aria-label="Register with MetaMask">
-                <MetaMaskFoxIcon />
-              </button>
-              <button type="button" className="win-social-btn" aria-label="Register with Shield">
-                <ShieldIcon />
-              </button>
-            </div>
+                              <div className="base-field_divider-ttxw4"></div>
 
-            <div className="win-footer-switch">
-              <span>Already have an account? </span>
-              <button
-                type="button"
-                className="win-link-blue win-footer-register-link"
-                onClick={() => {
-                  setAuthMode('login');
-                  setLoginSubTab('email');
-                  clearAllErrors();
-                }}
-              >
-                Log in
-              </button>
+                              <div className="base-field_control-ttxw4">
+                                <div className="base-field_controlContent-ttxw4">
+                                  <div className="control_root-5SZBQ control_filled-5SZBQ">
+                                    <input
+                                      id="v-15-1-0"
+                                      ref={phoneInputRef}
+                                      className="mask-input_input-GDetI"
+                                      data-testid="signInByPhone-form-phone"
+                                      type="tel"
+                                      inputMode="numeric"
+                                      autoComplete="off"
+                                      value={loginPhone}
+                                      onChange={(e) => handlePhoneChange(e.target.value, setLoginPhone)}
+                                      onFocus={() => {
+                                        setIsPhoneFocused(true);
+                                        setLoginPhoneErr('');
+                                      }}
+                                      onBlur={() => setIsPhoneFocused(false)}
+                                    />
+                                    <div className="control_placeholder-5SZBQ">
+                                      <span className="control_hiddenPlaceholder-5SZBQ">{loginPhoneCountry.code}</span>&nbsp;
+                                      {!loginPhone && '00000 00000'}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </label>
+                          </div>
+                          {loginPhoneErr && (
+                            <div style={{ color: '#ef4444', fontSize: '12px', marginTop: '2px', paddingLeft: '4px' }}>
+                              {loginPhoneErr}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        /* Email Input */
+                        <div
+                          className={`field-wrapper_root-xSBJ6 base-field_root-ttxw4 base-field_hasLabel-ttxw4${loginEmail ? ' base-field_filled-ttxw4' : ''}${isEmailFocused ? ' base-field_focused-ttxw4' : ''}${loginEmailErr ? ' field-wrapper_status-error-xSBJ6' : ''}`}
+                          style={{ marginBottom: 'var(--spacing-12)', '--v8217aea8': 'text' } as React.CSSProperties}
+                        >
+                          <div className="field-wrapper_control-xSBJ6">
+                            <label className="base-field_content-ttxw4" htmlFor="v-login-email">
+                              <div className="base-field_iconStart-ttxw4">
+                                <EmailIcon />
+                              </div>
+
+                              <div className="base-field_divider-ttxw4"></div>
+
+                              <div className="base-field_control-ttxw4">
+                                <div className="base-field_controlContent-ttxw4">
+                                  <div className={`control_root-5SZBQ control_hasLabel-5SZBQ${loginEmail ? ' control_filled-5SZBQ' : ''}`}>
+                                    <input
+                                      id="v-login-email"
+                                      type="email"
+                                      autoComplete="email"
+                                      value={loginEmail}
+                                      onChange={(e) => {
+                                        setLoginEmail(e.target.value);
+                                        setLoginEmailErr('');
+                                      }}
+                                      onFocus={() => {
+                                        setIsEmailFocused(true);
+                                        setLoginEmailErr('');
+                                      }}
+                                      onBlur={() => setIsEmailFocused(false)}
+                                    />
+                                  </div>
+                                </div>
+                                <div className="base-field_label-ttxw4">Email</div>
+                              </div>
+                            </label>
+                          </div>
+                          {loginEmailErr && (
+                            <div style={{ color: '#ef4444', fontSize: '12px', marginTop: '2px', paddingLeft: '4px' }}>
+                              {loginEmailErr}
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Password Input */}
+                      <div
+                        className={`field-wrapper_root-xSBJ6 base-field_root-ttxw4 base-field_hasLabel-ttxw4${loginPwd ? ' base-field_filled-ttxw4' : ''}${isPwdFocused ? ' base-field_focused-ttxw4' : ''}${loginPwdErr ? ' field-wrapper_status-error-xSBJ6' : ''}`}
+                        title="Password"
+                        style={{ marginBottom: 'var(--spacing-8)', '--v8217aea8': 'text' } as React.CSSProperties}
+                      >
+                        <div className="field-wrapper_control-xSBJ6">
+                          <label className="base-field_content-ttxw4" htmlFor="v-15-1-1">
+                            <div className="base-field_iconStart-ttxw4">
+                              <LockIcon />
+                            </div>
+
+                            <div className="base-field_divider-ttxw4"></div>
+
+                            <div className="base-field_control-ttxw4">
+                              <div className="base-field_controlContent-ttxw4">
+                                <div className={`control_root-5SZBQ control_hasLabel-5SZBQ${loginPwd ? ' control_filled-5SZBQ' : ''}`}>
+                                  <input
+                                    id="v-15-1-1"
+                                    data-testid="signInByPhone-form-password"
+                                    type="password"
+                                    autoComplete="current-password"
+                                    value={loginPwd}
+                                    onChange={(e) => {
+                                      setLoginPwd(e.target.value);
+                                      setLoginPwdErr('');
+                                    }}
+                                    onFocus={() => {
+                                      setIsPwdFocused(true);
+                                      setLoginPwdErr('');
+                                    }}
+                                    onBlur={() => setIsPwdFocused(false)}
+                                  />
+                                </div>
+                              </div>
+                              <div className="base-field_label-ttxw4">Password</div>
+                            </div>
+                          </label>
+                        </div>
+                        {loginPwdErr && (
+                          <div style={{ color: '#ef4444', fontSize: '12px', marginTop: '2px', paddingLeft: '4px' }}>
+                            {loginPwdErr}
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Forgot your password? button with redirect link to our login page */}
+                      <button
+                        className="base_root-5XEcn base_size-m-semibold-5XEcn base_variant-accent-5XEcn"
+                        data-testid="signInByPhone-form-recoveryPassword"
+                        type="button"
+                        style={{ marginBottom: 'var(--spacing-16)' }}
+                        onClick={handleForgotPassword}
+                      >
+                        <div style={{ display: 'contents' }}>Forgot your password?</div>
+                      </button>
+
+                      {/* Log in Button */}
+                      <button
+                        className="base_root-V0GRR base_size-xl-V0GRR base_variant-accent-V0GRR base_isWide-V0GRR"
+                        data-testid="signInByPhone-form-submit"
+                        type="submit"
+                        disabled={isSubmitting}
+                      >
+                        <div className="base_view-V0GRR">
+                          <div className="base_content-V0GRR">
+                            <div style={{ display: 'contents' }}>{isSubmitting ? 'Logging in...' : 'Log in'}</div>
+                          </div>
+                        </div>
+                      </button>
+                    </form>
+
+                    {/* Divider: or */}
+                    <div className="sign-in_line-95Gcg sign-in_withText-95Gcg">or</div>
+
+                    {/* OAuth / Social Logins */}
+                    <div className="oauth-buttons-container_root-cya6C sign-in_socials-95Gcg">
+                      <div className="oauth-buttons-container_buttons-cya6C oauth-buttons-container_centered-cya6C">
+                        <button className="base_root-HuD6g base_size-xl-HuD6g base_rootInteractive-HuD6g" data-testid="signInByPhone-form-socialButton-google" type="button" aria-label="Google">
+                          <div className="base_view-HuD6g">
+                            <GoogleIcon />
+                          </div>
+                        </button>
+
+                        <button className="base_root-HuD6g base_size-xl-HuD6g base_rootInteractive-HuD6g" data-testid="signInByPhone-form-socialButton-vk" type="button" aria-label="VK">
+                          <div className="base_view-HuD6g">
+                            <VkIcon />
+                          </div>
+                        </button>
+
+                        <button className="base_root-HuD6g base_size-xl-HuD6g base_rootInteractive-HuD6g" data-testid="signInByPhone-form-socialButton-telegram" type="button" aria-label="Telegram">
+                          <div className="base_view-HuD6g">
+                            <TelegramIcon />
+                          </div>
+                        </button>
+
+                        <button className="base_root-HuD6g base_size-xl-HuD6g base_rootInteractive-HuD6g" data-testid="signInByPhone-form-socialButton-yandex" type="button" aria-label="Yandex">
+                          <div className="base_view-HuD6g">
+                            <YandexIcon />
+                          </div>
+                        </button>
+
+                        <button className="base_root-HuD6g base_size-xl-HuD6g base_rootInteractive-HuD6g" type="button" aria-label="WalletConnect">
+                          <div className="base_view-HuD6g">
+                            <WalletConnectIcon />
+                          </div>
+                        </button>
+
+                        <button className="base_root-HuD6g base_size-xl-HuD6g base_rootInteractive-HuD6g" type="button" aria-label="MetaMask">
+                          <div className="base_view-HuD6g">
+                            <MetaMaskIcon />
+                          </div>
+                        </button>
+
+                        <button className="base_root-HuD6g base_size-xl-HuD6g base_rootInteractive-HuD6g" type="button" aria-label="TrustWallet">
+                          <div className="base_view-HuD6g">
+                            <TrustWalletIcon />
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Don't have an account? Register */}
+                    <div className="sign-in_register-95Gcg">
+                      <div>Don’t have an account?</div>
+                      <button
+                        className="base_root-5XEcn base_size-m-semibold-5XEcn base_variant-accent-5XEcn"
+                        data-testid="signInByPhone-form-signUpButton"
+                        type="button"
+                        onClick={() => {
+                          setAuthMode('register');
+                          clearAllErrors();
+                        }}
+                      >
+                        <div style={{ display: 'contents' }}>Register</div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                /* ==========================================================
+                   REGISTRATION VIEW
+                   ========================================================== */
+                <div className="auth_content-G6Xzm">
+                  <div>
+                    <form className="form_root-v4nVr" onSubmit={handleRegisterSubmit} noValidate>
+                      {/* Currency Field */}
+                      <div className="field-wrapper_root-xSBJ6 base-field_root-ttxw4" style={{ marginBottom: 'var(--spacing-12)' }}>
+                        <div className="field-wrapper_control-xSBJ6" onClick={() => { setCurrencySearch(''); setSubView('currency'); }} style={{ cursor: 'pointer' }}>
+                          <div className="base-field_content-ttxw4" style={{ cursor: 'pointer' }}>
+                            <div className="base-field_iconStart-ttxw4">
+                              <CurrencyBadge currency={regCurrency} size={24} />
+                            </div>
+                            <div className="base-field_divider-ttxw4"></div>
+                            <div className="base-field_control-ttxw4">
+                              <div style={{ fontSize: '14px', fontWeight: 500, color: '#111827' }}>
+                                {regCurrency.name} ({regCurrency.code})
+                              </div>
+                            </div>
+                            <ArrowBottomIcon />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Phone Field */}
+                      <div className={`field-wrapper_root-xSBJ6 base-field_root-ttxw4 base-field_filled-ttxw4${regPhoneErr ? ' field-wrapper_status-error-xSBJ6' : ''}`} style={{ marginBottom: 'var(--spacing-12)' }}>
+                        <div className="field-wrapper_control-xSBJ6">
+                          <label className="base-field_content-ttxw4">
+                            <div className="base-field_iconStart-ttxw4">
+                              <button
+                                className="base_root-5XEcn base_size-m-semibold-5XEcn base_variant-tertiary-5XEcn"
+                                type="button"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setCountrySearch('');
+                                  setSubView('country');
+                                }}
+                              >
+                                <div style={{ display: 'contents' }}>
+                                  <div className="phone-input_buttonContent-n13qz">
+                                    <span style={{ fontSize: '14px' }}>{regCountry.flag}</span>
+                                    <ArrowBottomIcon />
+                                  </div>
+                                </div>
+                              </button>
+                            </div>
+
+                            <div className="base-field_divider-ttxw4"></div>
+
+                            <div className="base-field_control-ttxw4">
+                              <div className="base-field_controlContent-ttxw4">
+                                <div className="control_root-5SZBQ control_filled-5SZBQ">
+                                  <input
+                                    className="mask-input_input-GDetI"
+                                    type="tel"
+                                    inputMode="numeric"
+                                    value={regPhone}
+                                    placeholder="Phone number"
+                                    onChange={(e) => handlePhoneChange(e.target.value, setRegPhone)}
+                                    onFocus={() => setRegPhoneErr('')}
+                                  />
+                                  <div className="control_placeholder-5SZBQ">
+                                    <span className="control_hiddenPlaceholder-5SZBQ">{regCountry.code}</span>&nbsp;
+                                    {!regPhone && '00000 00000'}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+                        </div>
+                        {regPhoneErr && (
+                          <div style={{ color: '#ef4444', fontSize: '12px', marginTop: '2px', paddingLeft: '4px' }}>
+                            {regPhoneErr}
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Email Field */}
+                      <div className={`field-wrapper_root-xSBJ6 base-field_root-ttxw4 base-field_hasLabel-ttxw4${regEmail ? ' base-field_filled-ttxw4' : ''}${regEmailErr ? ' field-wrapper_status-error-xSBJ6' : ''}`} style={{ marginBottom: 'var(--spacing-12)' }}>
+                        <div className="field-wrapper_control-xSBJ6">
+                          <label className="base-field_content-ttxw4">
+                            <div className="base-field_iconStart-ttxw4">
+                              <EmailIcon />
+                            </div>
+                            <div className="base-field_divider-ttxw4"></div>
+                            <div className="base-field_control-ttxw4">
+                              <div className="base-field_controlContent-ttxw4">
+                                <div className={`control_root-5SZBQ control_hasLabel-5SZBQ${regEmail ? ' control_filled-5SZBQ' : ''}`}>
+                                  <input
+                                    type="email"
+                                    autoComplete="email"
+                                    value={regEmail}
+                                    onChange={(e) => {
+                                      setRegEmail(e.target.value);
+                                      setRegEmailErr('');
+                                    }}
+                                  />
+                                </div>
+                              </div>
+                              <div className="base-field_label-ttxw4">Email</div>
+                            </div>
+                          </label>
+                        </div>
+                        {regEmailErr && (
+                          <div style={{ color: '#ef4444', fontSize: '12px', marginTop: '2px', paddingLeft: '4px' }}>
+                            {regEmailErr}
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Password Field */}
+                      <div className={`field-wrapper_root-xSBJ6 base-field_root-ttxw4 base-field_hasLabel-ttxw4${regPwd ? ' base-field_filled-ttxw4' : ''}${regPwdErr ? ' field-wrapper_status-error-xSBJ6' : ''}`} style={{ marginBottom: 'var(--spacing-12)' }}>
+                        <div className="field-wrapper_control-xSBJ6">
+                          <label className="base-field_content-ttxw4">
+                            <div className="base-field_iconStart-ttxw4">
+                              <LockIcon />
+                            </div>
+                            <div className="base-field_divider-ttxw4"></div>
+                            <div className="base-field_control-ttxw4">
+                              <div className="base-field_controlContent-ttxw4">
+                                <div className={`control_root-5SZBQ control_hasLabel-5SZBQ${regPwd ? ' control_filled-5SZBQ' : ''}`}>
+                                  <input
+                                    type="password"
+                                    autoComplete="new-password"
+                                    value={regPwd}
+                                    onChange={(e) => {
+                                      setRegPwd(e.target.value);
+                                      setRegPwdErr('');
+                                    }}
+                                  />
+                                </div>
+                              </div>
+                              <div className="base-field_label-ttxw4">Password</div>
+                            </div>
+                          </label>
+                        </div>
+                        <div style={{ fontSize: '11px', color: '#6b7280', marginTop: '2px', paddingLeft: '4px' }}>
+                          At least 8 characters
+                        </div>
+                        {regPwdErr && (
+                          <div style={{ color: '#ef4444', fontSize: '12px', marginTop: '2px', paddingLeft: '4px' }}>
+                            {regPwdErr}
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Promo Code section */}
+                      <div style={{ marginBottom: '12px' }}>
+                        <button
+                          type="button"
+                          className="base_root-5XEcn base_size-m-semibold-5XEcn base_variant-accent-5XEcn"
+                          onClick={() => setShowPromo(!showPromo)}
+                        >
+                          <div style={{ display: 'contents' }}>
+                            {showPromo ? '− Hide promo code' : 'Add promo code'}
+                          </div>
+                        </button>
+                        {showPromo && (
+                          <div className="field-wrapper_root-xSBJ6 base-field_root-ttxw4" style={{ marginTop: '8px' }}>
+                            <div className="field-wrapper_control-xSBJ6">
+                              <input
+                                type="text"
+                                style={{ width: '100%', border: 'none', background: 'transparent', padding: '0 16px', outline: 'none', fontSize: '14px' }}
+                                placeholder="Enter promo code"
+                                value={regPromo}
+                                onChange={(e) => setRegPromo(e.target.value)}
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Terms */}
+                      <div style={{ marginBottom: '16px' }}>
+                        <label style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', cursor: 'pointer', fontSize: '13px', color: '#6b7280' }}>
+                          <input
+                            type="checkbox"
+                            checked={regAgreed}
+                            onChange={(e) => {
+                              setRegAgreed(e.target.checked);
+                              if (e.target.checked) setRegAgreedErr('');
+                            }}
+                            style={{ marginTop: '3px' }}
+                          />
+                          <span>
+                            By clicking Register, I accept the{' '}
+                            <span style={{ color: '#2563eb' }}>User Agreement</span>
+                          </span>
+                        </label>
+                        {regAgreedErr && (
+                          <div style={{ color: '#ef4444', fontSize: '12px', marginTop: '2px', paddingLeft: '4px' }}>
+                            {regAgreedErr}
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Register Button */}
+                      <button
+                        className="base_root-V0GRR base_size-xl-V0GRR base_variant-accent-V0GRR base_isWide-V0GRR"
+                        type="submit"
+                        disabled={isSubmitting}
+                      >
+                        <div className="base_view-V0GRR">
+                          <div className="base_content-V0GRR">
+                            <div style={{ display: 'contents' }}>{isSubmitting ? 'Registering...' : 'Register'}</div>
+                          </div>
+                        </div>
+                      </button>
+                    </form>
+
+                    <div className="sign-in_line-95Gcg sign-in_withText-95Gcg">or</div>
+
+                    {/* OAuth / Social */}
+                    <div className="oauth-buttons-container_root-cya6C sign-in_socials-95Gcg">
+                      <div className="oauth-buttons-container_buttons-cya6C oauth-buttons-container_centered-cya6C">
+                        <button className="base_root-HuD6g base_size-xl-HuD6g base_rootInteractive-HuD6g" type="button" aria-label="Google">
+                          <div className="base_view-HuD6g"><GoogleIcon /></div>
+                        </button>
+                        <button className="base_root-HuD6g base_size-xl-HuD6g base_rootInteractive-HuD6g" type="button" aria-label="VK">
+                          <div className="base_view-HuD6g"><VkIcon /></div>
+                        </button>
+                        <button className="base_root-HuD6g base_size-xl-HuD6g base_rootInteractive-HuD6g" type="button" aria-label="Telegram">
+                          <div className="base_view-HuD6g"><TelegramIcon /></div>
+                        </button>
+                        <button className="base_root-HuD6g base_size-xl-HuD6g base_rootInteractive-HuD6g" type="button" aria-label="WalletConnect">
+                          <div className="base_view-HuD6g"><WalletConnectIcon /></div>
+                        </button>
+                        <button className="base_root-HuD6g base_size-xl-HuD6g base_rootInteractive-HuD6g" type="button" aria-label="MetaMask">
+                          <div className="base_view-HuD6g"><MetaMaskIcon /></div>
+                        </button>
+                        <button className="base_root-HuD6g base_size-xl-HuD6g base_rootInteractive-HuD6g" type="button" aria-label="TrustWallet">
+                          <div className="base_view-HuD6g"><TrustWalletIcon /></div>
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Already have an account? Log in */}
+                    <div className="sign-in_register-95Gcg">
+                      <div>Already have an account?</div>
+                      <button
+                        className="base_root-5XEcn base_size-m-semibold-5XEcn base_variant-accent-5XEcn"
+                        type="button"
+                        onClick={() => {
+                          setAuthMode('login');
+                          clearAllErrors();
+                        }}
+                      >
+                        <div style={{ display: 'contents' }}>Log in</div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
